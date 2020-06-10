@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class SquirrelChatUiComponent implements OnInit {
   public message = "";
   public showEmojiPicker = false;
+  public showAttachmentsCard  = false;
   constructor() {
    }
 
@@ -20,6 +21,9 @@ export class SquirrelChatUiComponent implements OnInit {
 
   public toggleEmojiPicker() {
     this.showEmojiPicker = !this.showEmojiPicker;
+  }
+  public toggleAttachmentsCard() {
+    this.showAttachmentsCard = !this.showAttachmentsCard;
   }
 
   public emojiSelected({emoji}) {
