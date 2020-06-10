@@ -1,18 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lib-squirrel-chat-ui',
-  template: `
-    <p>
-      squirrel-chat-ui works!
-    </p>
-  `,
+  selector: 'squirrel-chat-ui',
+  templateUrl: "./squirrel-chat-ui.component.html",
   styles: [
   ]
 })
 export class SquirrelChatUiComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+   }
 
   ngOnInit(): void {
   }
