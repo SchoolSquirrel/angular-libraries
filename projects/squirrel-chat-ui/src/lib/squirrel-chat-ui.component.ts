@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SquirrelChatUiComponent implements OnInit {
   public message = "";
+  public showEmojiPicker = false;
   constructor() {
    }
 
@@ -14,9 +15,16 @@ export class SquirrelChatUiComponent implements OnInit {
   }
 
   public getTrimmedMessage() {
-    console.log(this.message);
-    console.log(this.message.trim());
     return this.message.trim();
+  }
+
+  public toggleEmojiPicker() {
+    this.showEmojiPicker = !this.showEmojiPicker;
+  }
+
+  public emojiSelected({emoji}) {
+    this.message += emoji.native;
+    this.showEmojiPicker = false;
   }
 
 }

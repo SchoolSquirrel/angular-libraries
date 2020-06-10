@@ -14,9 +14,10 @@
         </div>
     </div>
     <div id="scu-body" class="flex-grow-1">Body</div>
-    <div id="scu-footer" class="bg-light p-1 d-flex">
+    <div id="scu-footer" class="bg-light p-1 d-flex p-relative">
+        <emoji-mart id="scu-emoji-picker" [class.d-none]="!showEmojiPicker" (emojiSelect)="emojiSelected($event)"></emoji-mart>
         <div class="scu-actions">
-            <button class="btn text-dark"><i class="fas fa-laugh"></i></button>
+            <button class="btn text-dark" (click)="toggleEmojiPicker()"><i class="fas fa-laugh"></i></button>
             <button class="btn text-dark"><i class="fas fa-paperclip"></i></button>
             <button class="btn text-dark"><i class="fas fa-edit"></i></button>
         </div>
