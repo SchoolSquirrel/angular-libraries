@@ -21,9 +21,11 @@ export class SquirrelChatUiComponent implements OnInit {
 
   public toggleEmojiPicker() {
     this.showEmojiPicker = !this.showEmojiPicker;
+    this.showAttachmentsCard = false;
   }
   public toggleAttachmentsCard() {
     this.showAttachmentsCard = !this.showAttachmentsCard;
+    this.showEmojiPicker = false;
   }
 
   public emojiSelected({emoji}) {
