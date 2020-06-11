@@ -13,7 +13,14 @@
             </div>
         </div>
     </div>
-    <div id="scu-body" class="flex-grow-1">Body</div>
+    <div id="scu-body" class="flex-grow-1 p-4 overflow-auto">
+        <div class="" *ngFor="let message of messages; let idx = index">
+            <div class="scu-message-holder d-flex my-1" [class.justify-content-end]="message.fromMe">
+                <div class="scu-message px-2 py-1" [class.scu-from-me]="message.fromMe">{{message.text}}</div>
+            </div>
+
+        </div>
+    </div>
     <div id="scu-footer" class="bg-light p-1 d-flex p-relative">
         <emoji-mart id="scu-emoji-picker" [class.d-none]="!showEmojiPicker" (emojiSelect)="emojiSelected($event)"></emoji-mart>
         <div id="scu-attachments" class="scu-card p-4 mx-4 bg-white" [class.d-none]="!showAttachmentsCard">

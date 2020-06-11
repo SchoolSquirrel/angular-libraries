@@ -11,6 +11,7 @@ import { SquirrelChatUiModule } from '../../../squirrel-chat-ui/src/public-api';
   imports: [
     BrowserModule,
     SquirrelChatUiModule,
+    BrowserModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
