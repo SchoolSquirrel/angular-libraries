@@ -20,17 +20,6 @@
                             "tsConfig": "projects/squirrel-chat-ui/tsconfig.lib.prod.json"
                         }
                     }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": [
-                            "projects/squirrel-chat-ui/tsconfig.lib.json"
-                        ],
-                        "exclude": [
-                            "**/node_modules/**"
-                        ]
-                    }
                 }
             }
         },
@@ -109,17 +98,6 @@
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
                         "browserTarget": "demo:build"
-                    }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": [
-                            "projects/demo/tsconfig.app.json"
-                        ],
-                        "exclude": [
-                            "**/node_modules/**"
-                        ]
                     }
                 }
             }
