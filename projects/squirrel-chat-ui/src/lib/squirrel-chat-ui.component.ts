@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Message } from './Message';
 
 @Component({
@@ -7,11 +7,13 @@ import { Message } from './Message';
     styleUrls: ["./squirrel-chat-ui.component.scss"],
 })
 export class SquirrelChatUiComponent implements OnInit {
+    @ViewChild("scrollMe", {static: true}) private messagesContainer: ElementRef;
     public message = "";
     public showEmojiPicker = false;
     public showAttachmentsCard = false;
     private user1 = { id: 1, name: "Güther" };
     private user2 = { id: 2, name: "Tom" };
+    private disableScrollDown = false;
     public messages: Message[] = [
         {
             id: 0,
@@ -57,9 +59,11 @@ export class SquirrelChatUiComponent implements OnInit {
         },
     ];
     constructor() {
+        this.scrollToBottom();
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
+        this.scrollToBottom();
     }
 
     public getTrimmedMessage() {
@@ -80,4 +84,27 @@ export class SquirrelChatUiComponent implements OnInit {
         this.showEmojiPicker = false;
     }
 
+    public ngAfterViewChecked() {
+        this.scrollToBottom();
+    }
+
+    public onScroll() {
+        let element = this.messagesContainer.nativeElement
+        let atBottom = element.scrollHeight - element.scrollTop === element.clientHeight
+        if (this.disableScrollDown && atBottom) {
+            this.disableScrollDown = false
+        } else {
+            this.disableScrollDown = true
+        }
+    }
+
+
+    private scrollToBottom(): void {
+        if (this.disableScrollDown) {
+            return;
+        }
+        try {
+            this.messagesContainer.nativeElement.scrollTop = this.messagesContainer.nativeElement.scrollHeight;
+        } catch(err) { }
+    }
 }

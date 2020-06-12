@@ -13,12 +13,11 @@
             </div>
         </div>
     </div>
-    <div id="scu-body" class="flex-grow-1 p-4 overflow-auto">
+    <div id="scu-body" class="flex-grow-1 p-4 overflow-auto" #scrollMe (scroll)="onScroll()">
         <div class="" *ngFor="let message of messages; let idx = index">
             <div class="scu-message-holder d-flex my-1" [class.justify-content-end]="message.fromMe">
                 <div class="scu-message px-2 py-1" [class.scu-from-me]="message.fromMe">{{message.text}}</div>
             </div>
-
         </div>
     </div>
     <div id="scu-footer" class="bg-light p-1 d-flex p-relative">
