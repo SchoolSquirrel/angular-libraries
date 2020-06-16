@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { PickerModule } from "@ctrl/ngx-emoji-mart";
 import { BrowserModule } from "@angular/platform-browser";
+import { EmojiModule } from "@ctrl/ngx-emoji-mart/ngx-emoji";
 import { SquirrelChatUiComponent } from "./squirrel-chat-ui.component";
 
 @NgModule({
@@ -9,6 +10,7 @@ import { SquirrelChatUiComponent } from "./squirrel-chat-ui.component";
     imports: [
         FormsModule,
         PickerModule,
+        EmojiModule,
         BrowserModule,
     ],
     exports: [SquirrelChatUiComponent],

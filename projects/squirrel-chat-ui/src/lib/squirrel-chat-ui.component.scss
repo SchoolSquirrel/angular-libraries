@@ -9,7 +9,6 @@
         position: absolute;
         bottom: 3rem;
     }
-    #scu-attachments {}
     .scu-card {
         box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
     }
@@ -20,9 +19,33 @@
         &.scu-from-me {
             background-color: rgba(17, 199, 255, 0.959);
         }
+        .scu-message-actions {
+            display: none;
+            width: max-content;
+            right: 0;
+            top: -3rem;
+            .scu-dropdown {
+                width: min-content;
+                left: unset;
+                right: 0;
+            }
+        }
+        &:hover {
+            .scu-message-actions {
+                display: block;
+            }
+        }
     }
 }
 
 .p-relative {
     position: relative;
+}
+
+.scu-shadow {
+    box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+}
+
+.scu-divider {
+    border-left: 1px solid rgb(201, 201, 201);
 }

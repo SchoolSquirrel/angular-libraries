@@ -3,6 +3,7 @@ import {
 } from "@angular/core";
 import { Message } from "./Message";
 import { MessageStatus } from "./MessageStatus";
+import { MessageReactions } from "./MessageReactions";
 
 @Component({
     selector: "squirrel-chat-ui",
@@ -13,6 +14,7 @@ export class SquirrelChatUiComponent implements OnInit {
     @ViewChild("scrollMe", { static: true }) private messagesContainer: ElementRef;
     public message = "";
     public showEmojiPicker = false;
+    public reactions = Object.values(MessageReactions);
     public showAttachmentsCard = false;
     private disableScrollDown = false;
     @Input() public messages: Message[] = [];

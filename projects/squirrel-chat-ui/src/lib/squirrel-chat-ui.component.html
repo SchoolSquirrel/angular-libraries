@@ -16,7 +16,17 @@
     <div id="scu-body" class="flex-grow-1 p-4 overflow-auto" #scrollMe (scroll)="onScroll()">
         <div class="" *ngFor="let message of messages; let idx = index">
             <div class="scu-message-holder d-flex my-1" [class.justify-content-end]="message.fromMe">
-                <div class="scu-message px-2 py-1" [class.scu-from-me]="message.fromMe">
+                <div class="scu-message px-2 py-1 position-relative" [class.scu-from-me]="message.fromMe">
+                    <div class="scu-message-actions bg-white position-absolute p-1 pointer-event scu-shadow">
+                        <button class="btn py-0 px-1" *ngFor="let reaction of reactions"><ngx-emoji [emoji]="reaction" size="24"></ngx-emoji></button>
+                        <span class="scu-divider mx-1"></span>
+                        <button (focus)="message.showDropDown = true" (blur)="message.showDropDown = false" class="btn"><i class="fas fa-ellipsis-h pb-2 "></i></button>
+                        <div class="dropdown-menu dropdown-menu-right scu-dropdown" [class.show]="message.showDropDown">
+                            <button ngbdropdownitem="" class="dropdown-item">Action - 1</button>
+                            <button ngbdropdownitem="" class="dropdown-item">Another Action</button>
+                            <button ngbdropdownitem="" class="dropdown-item">Something else is here</button>
+                        </div>
+                    </div>
                     <span class="d-block">{{message.text}}</span>
                     <div class="text-right text-muted">
                         <small>{{message.date | date:'shortTime'}} <i *ngIf="message.fromMe" [class]="getStatusIconClass(message)"></i></small>
