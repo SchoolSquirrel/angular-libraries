@@ -18,6 +18,7 @@ export class SquirrelChatUiComponent implements OnInit {
     public showAttachmentsCard = false;
     private disableScrollDown = false;
     @Input() public messages: Message[] = [];
+    @Input() public menuItems: string[] = [];
     @Output() videoCallClicked = new EventEmitter<void>();
     @Output() audioCallClicked = new EventEmitter<void>();
 

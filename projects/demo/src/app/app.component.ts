@@ -94,6 +94,12 @@ export class AppComponent {
         },
     ];
 
+    public menuItems: string[] = [
+        "Chat blockieren",
+        "Email schreiben",
+        "...",
+    ]
+
     public onAudioCallClicked(): void {
         alert("Audio call clicked!");
     }
