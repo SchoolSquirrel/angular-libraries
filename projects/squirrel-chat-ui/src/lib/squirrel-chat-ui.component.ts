@@ -102,5 +102,6 @@ export class SquirrelChatUiComponent implements OnInit {
         setTimeout(() => {
             this.scrollToBottom(true);
         });
+        this.message = "";
     }
 }
