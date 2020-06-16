@@ -1,5 +1,5 @@
 import {
-    Component, OnInit, ViewChild, ElementRef, Input,
+    Component, OnInit, ViewChild, ElementRef, Input, Output, EventEmitter,
 } from "@angular/core";
 import { Message } from "./Message";
 import { MessageStatus } from "./MessageStatus";
@@ -18,6 +18,8 @@ export class SquirrelChatUiComponent implements OnInit {
     public showAttachmentsCard = false;
     private disableScrollDown = false;
     @Input() public messages: Message[] = [];
+    @Output() videoCallClicked = new EventEmitter<void>();
+    @Output() audioCallClicked = new EventEmitter<void>();
 
     constructor() {
         this.scrollToBottom();

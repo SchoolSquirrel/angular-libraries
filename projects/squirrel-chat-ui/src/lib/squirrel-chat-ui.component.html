@@ -7,8 +7,8 @@
         </div>
         <div class="scu-actions d-flex align-items-center flex-column">
             <div class="my-auto">
-                <button class="btn text-primary"><i class="fas fa-video"></i></button>
-                <button class="btn text-primary"><i class="fas fa-phone-alt"></i></button>
+                <button class="btn text-primary" (click)="videoCallClicked.emit()"><i class="fas fa-video"></i></button>
+                <button class="btn text-primary" (click)="audioCallClicked.emit()"><i class="fas fa-phone-alt"></i></button>
                 <button class="btn text-primary"><i class="fas fa-ellipsis-v"></i></button>
             </div>
         </div>
