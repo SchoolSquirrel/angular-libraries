@@ -1,0 +1,34 @@
+name: Deploy Demo to GitHub Pages
+
+on:
+  push: 
+    branches:   
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+    - name: Use Node.js 10.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+    - name: Install Angular CLI
+      run: npm install -g @angular/cli
+    - name: Install dependencies
+      run: npm install
+    - name: Build library
+      run: ng build --prod squirrel-chat-ui
+      - name: Build demo app
+        run: ng build --prod demo
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@3.5.5
+      with:
+        BRANCH: gh-pages
+        FOLDER: dist/demo
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BASE_BRANCH: master
