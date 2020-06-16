@@ -1,0 +1,27 @@
+name: Lint
+
+on:
+  push: 
+    branches:   
+      - master
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+    - name: Use Node.js 10.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+    - name: Install Angular CLI
+      run: npm install -g @angular/cli
+    - name: Install dependencies
+      run: npm install
+    - name: Build library
+      run: ng build --prod squirrel-chat-ui
+    - name: Lint the library
+      run: npx eslint .
