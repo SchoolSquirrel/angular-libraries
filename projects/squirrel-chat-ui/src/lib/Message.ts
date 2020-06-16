@@ -1,3 +1,5 @@
+import { MessageStatus } from "./MessageStatus";
+
 export interface Message {
     id: number;
     text: string;
@@ -6,4 +8,5 @@ export interface Message {
         id: number;
         name: string;
     };
+    status?: MessageStatus;
 }
