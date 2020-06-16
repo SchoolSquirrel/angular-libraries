@@ -36,10 +36,6 @@ export class SquirrelChatUiComponent implements OnInit {
         return this.message.trim();
     }
 
-    t() {
-        alert("HI");
-    }
-
     public toggleEmojiPicker(): void {
         this.showEmojiPicker = !this.showEmojiPicker;
         this.showAttachmentsCard = false;
