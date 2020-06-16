@@ -79,4 +79,11 @@ export class SquirrelChatUiComponent implements OnInit {
     public getStatusIconClass(message: Message): string {
         return `fas fa-${message.status == MessageStatus.Seen ? "check-double text-primary" : message.status == MessageStatus.Delivered ? "check-double" : message.status == MessageStatus.Sent ? "check" : message.status == MessageStatus.Waiting ? "clock" : ""}`;
     }
+
+    public isContinuing(message: Message): boolean {
+        const index = this.messages.indexOf(message);
+        return this.messages[index]
+            && this.messages[index - 1]
+            && this.messages[index].sender == this.messages[index - 1].sender;
+    }
 }

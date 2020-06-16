@@ -34,6 +34,7 @@
                             <button ngbdropdownitem="" class="dropdown-item">Something else is here</button>
                         </div>
                     </div>
+                    <span class="scu-user" *ngIf="!message.fromMe && !isContinuing(message)"><b>{{message.sender.name}}</b></span>
                     <span class="d-block">{{message.text}}</span>
                     <div class="text-right text-muted">
                         <small>{{message.date | date:'shortTime'}} <i *ngIf="message.fromMe" [class]="getStatusIconClass(message)"></i></small>
