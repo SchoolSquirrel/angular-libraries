@@ -23,8 +23,8 @@ jobs:
       run: npm install
     - name: Build library
       run: ng build --prod squirrel-chat-ui
-      - name: Build demo app
-        run: ng build --prod demo
+    - name: Build demo app
+      run: ng build --prod demo
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@3.5.5
       with:
