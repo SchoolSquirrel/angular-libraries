@@ -23,6 +23,7 @@ export class SquirrelChatUiComponent implements OnInit {
     @Input() public menuItems: string[] = [];
     @Input() public profileImageSource = "";
     @Input() public title = "";
+    @Input() public subtitle = "";
     @Output() videoCallClicked = new EventEmitter<void>();
     @Output() audioCallClicked = new EventEmitter<void>();
     @Output() menuItemClicked = new EventEmitter<string>();
