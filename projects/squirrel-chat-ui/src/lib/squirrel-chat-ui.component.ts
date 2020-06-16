@@ -65,8 +65,8 @@ export class SquirrelChatUiComponent implements OnInit {
         }
     }
 
-    private scrollToBottom(): void {
-        if (this.disableScrollDown) {
+    private scrollToBottom(ignoreDisabled = false): void {
+        if (this.disableScrollDown && !ignoreDisabled) {
             return;
         }
         try {
@@ -99,5 +99,8 @@ export class SquirrelChatUiComponent implements OnInit {
         };
         this.messages.push(newMessage);
         this.messageSent.emit(newMessage);
+        setTimeout(() => {
+            this.scrollToBottom(true);
+        });
     }
 }
