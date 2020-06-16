@@ -16,6 +16,7 @@ export class SquirrelChatUiComponent implements OnInit {
     public showEmojiPicker = false;
     public reactions = Object.values(MessageReactions);
     public showAttachmentsCard = false;
+    public showMenuDropDown = false;
     private disableScrollDown = false;
     @Input() public messages: Message[] = [];
     @Input() public menuItems: string[] = [];
