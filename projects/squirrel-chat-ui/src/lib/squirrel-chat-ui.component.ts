@@ -23,6 +23,7 @@ export class SquirrelChatUiComponent implements OnInit {
     @Output() videoCallClicked = new EventEmitter<void>();
     @Output() audioCallClicked = new EventEmitter<void>();
     @Output() menuItemClicked = new EventEmitter<string>();
+    @Output() messageSent = new EventEmitter<Message>();
 
     constructor() {
         this.scrollToBottom();
@@ -85,5 +86,18 @@ export class SquirrelChatUiComponent implements OnInit {
         return this.messages[index]
             && this.messages[index - 1]
             && this.messages[index].sender == this.messages[index - 1].sender;
+    }
+
+    public sendMessage(): void {
+        const newMessage: Message = {
+            date: new Date(),
+            fromMe: true,
+            text: this.message,
+            sender: undefined,
+            id: undefined,
+            status: MessageStatus.Waiting,
+        };
+        this.messages.push(newMessage);
+        this.messageSent.emit(newMessage);
     }
 }

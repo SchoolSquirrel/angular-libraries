@@ -110,4 +110,16 @@ export class AppComponent {
     public onMenuItemClicked(item: string): void {
         alert(`Menu item: "${item}"`);
     }
+    public onMessageSent(message: Message): void {
+        // fake a sending delay
+        setTimeout(() => {
+            this.messages[this.messages.indexOf(message)].status = MessageStatus.Sent;
+            setTimeout(() => {
+                this.messages[this.messages.indexOf(message)].status = MessageStatus.Delivered;
+                setTimeout(() => {
+                    this.messages[this.messages.indexOf(message)].status = MessageStatus.Seen;
+                }, 2000);
+            }, 2000);
+        }, 2000);
+    }
 }
