@@ -12,6 +12,7 @@ import { MessageReactions } from "./MessageReactions";
 })
 export class SquirrelChatUiComponent implements OnInit {
     @ViewChild("scrollMe", { static: true }) private messagesContainer: ElementRef;
+    @ViewChild("messageInput", { static: true }) private messageInput: ElementRef;
     public message = "";
     public showEmojiPicker = false;
     public reactions = Object.values(MessageReactions);
@@ -103,5 +104,6 @@ export class SquirrelChatUiComponent implements OnInit {
             this.scrollToBottom(true);
         });
         this.message = "";
+        this.messageInput.nativeElement.focus();
     }
 }

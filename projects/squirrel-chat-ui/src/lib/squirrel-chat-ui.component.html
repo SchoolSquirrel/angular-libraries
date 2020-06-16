@@ -95,7 +95,7 @@
             <button class="btn text-dark"><i class="fas fa-edit"></i></button>
         </div>
         <div class="scu-input flex-grow-1">
-            <input type="text" class="form-control w-100" [(ngModel)]="message">
+            <input type="text" class="form-control w-100" [(ngModel)]="message" #messageInput>
         </div>
         <div class="scu-actions">
             <button class="btn text-dark" (click)="sendMessage()" [disabled]="getTrimmedMessage() == '' ? 'disabled' : ''"><i class="fas fa-paper-plane"></i></button>
