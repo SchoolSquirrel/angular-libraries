@@ -9,10 +9,12 @@
             <div class="my-auto">
                 <button class="btn text-primary" (click)="videoCallClicked.emit()"><i class="fas fa-video"></i></button>
                 <button class="btn text-primary" (click)="audioCallClicked.emit()"><i class="fas fa-phone-alt"></i></button>
-                <div class="dropdown d-inline" *ngIf="menuItems.length > 0">
-                    <button class="btn text-primary" (click)="showMenuDropDown = !showMenuDropDown" (blur)="showMenuDropDown = false"><i class="fas fa-ellipsis-v"></i></button>
+                <div class="dropdown d-inline" *ngIf="menuItems.length > 0" (blur)="showMenuDropDown = false">
+                    <button class="btn text-primary" (click)="showMenuDropDown = !showMenuDropDown"><i class="fas fa-ellipsis-v"></i></button>
                     <div class="dropdown-menu dropdown-menu-right" [class.show]="showMenuDropDown">
-                        <button class="dropdown-item" *ngFor="let menuItem of menuItems">{{menuItem}}</button>
+                        <ng-container *ngFor="let menuItem of menuItems">
+                            <button (click)="menuItemClicked.emit(menuItem)" (blur)="showMenuDropDown = false" class="dropdown-item">{{menuItem}}</button>
+                        </ng-container>
                     </div>
                 </div>
             </div>

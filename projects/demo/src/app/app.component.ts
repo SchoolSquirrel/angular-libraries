@@ -107,4 +107,7 @@ export class AppComponent {
     public onVideoCallClicked(): void {
         alert("Video call clicked!");
     }
+    public onMenuItemClicked(item): void {
+        alert(`Menu item: "${item}"`);
+    }
 }

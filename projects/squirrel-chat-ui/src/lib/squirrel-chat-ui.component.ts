@@ -22,6 +22,7 @@ export class SquirrelChatUiComponent implements OnInit {
     @Input() public menuItems: string[] = [];
     @Output() videoCallClicked = new EventEmitter<void>();
     @Output() audioCallClicked = new EventEmitter<void>();
+    @Output() menuItemClicked = new EventEmitter<string>();
 
     constructor() {
         this.scrollToBottom();
@@ -33,6 +34,10 @@ export class SquirrelChatUiComponent implements OnInit {
 
     public getTrimmedMessage(): string {
         return this.message.trim();
+    }
+
+    t() {
+        alert("HI");
     }
 
     public toggleEmojiPicker(): void {
