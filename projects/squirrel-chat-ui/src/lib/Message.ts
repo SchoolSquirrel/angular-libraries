@@ -9,4 +9,5 @@ export interface Message {
         name: string;
     };
     status?: MessageStatus;
+    date: Date;
 }

@@ -19,7 +19,7 @@
                 <div class="scu-message px-2 py-1" [class.scu-from-me]="message.fromMe">
                     <span class="d-block">{{message.text}}</span>
                     <div class="text-right text-muted">
-                        <small><i *ngIf="message.fromMe" [class]="getStatusIconClass(message)"></i></small>
+                        <small>{{message.date | date:'shortTime'}} <i *ngIf="message.fromMe" [class]="getStatusIconClass(message)"></i></small>
                     </div>
                 </div>
             </div>
