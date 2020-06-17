@@ -16,7 +16,7 @@
       "dom"
     ],
     "paths": {
-      "squirrel-chat-ui": [
+      "@schoolsquirrel/squirrel-chat-ui": [
         "dist/squirrel-chat-ui/squirrel-chat-ui",
         "dist/squirrel-chat-ui"
       ]
