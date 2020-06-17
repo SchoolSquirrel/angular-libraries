@@ -49,6 +49,7 @@ jobs:
       with:
         node-version: '10.x'
     - name: Generate changelog
+      id: changelog
       uses: scottbrenner/generate-changelog-action@master
       env:
         REPO: ${{ github.repository }}
@@ -60,7 +61,7 @@ jobs:
         tag_name: ${{ github.ref }}
         release_name: ${{ github.ref }}
         body: |
-          ${{ steps.Changelog.outputs.changelog }}
+          ${{ steps.changelog.outputs.changelog }}
 
           View this library on npmjs.com: [https://www.npmjs.com/package/@schoolsquirrel/squirrel-chat-ui](https://www.npmjs.com/package/@schoolsquirrel/squirrel-chat-ui)
         draft: true
