@@ -15,6 +15,7 @@ export class AppComponent {
             icon: "fas fa-upload",
             name: "Hochladen",
             id: "upload",
+            loadingIndicatorText: "Uploading file...",
         },
         {
             icon: "fas fa-folder-open",
@@ -31,16 +32,19 @@ export class AppComponent {
             icon: "fas fa-map-marker-alt",
             name: "Standort",
             id: "location",
+            loadingIndicatorText: "Finding your location...",
         },
         {
             icon: "fas fa-video",
             name: "Video",
             id: "video",
+            loadingIndicatorText: "Filming video...",
         },
         {
             icon: "fas fa-microphone",
             name: "Audio",
             id: "audio",
+            loadingIndicatorText: "Recording audio...",
         },
     ]
     public messages: Message[] = [
@@ -159,6 +163,10 @@ export class AppComponent {
         if (id == "choose") {
             setTimeout(() => {
                 setUrl("https://placeakitten.com/300/100");
+            }, 2000);
+        } else {
+            setTimeout(() => {
+                setUrl("Some data");
             }, 2000);
         }
     }

@@ -45,8 +45,8 @@
     </div>
     <div id="scu-footer" class="bg-light p-1 d-flex p-relative">
         <emoji-mart id="scu-emoji-picker" [class.d-none]="!showEmojiPicker" (emojiSelect)="emojiSelected($event)"></emoji-mart>
-        <div id="scu-attachments" class="scu-card p-4 mx-4 bg-white" [class.d-none]="!showAttachmentsCard">
-            <table class="text-center">
+        <div id="scu-attachments" class="scu-card mx-4 bg-white" [class.d-none]="!showAttachmentsCard">
+            <table class="text-center m-4" [style.visibility]="attachmentLoading ? 'hidden' : 'visible'">
                 <tr *ngFor="let attachmentButtonRow of attachmentButtonRows">
                     <td class="p-2" *ngFor="let attachmentButton of attachmentButtonRow">
                         <button class="btn text-primary" (click)="attach(attachmentButton)">
@@ -56,6 +56,10 @@
                     </td>
                 </tr>
             </table>
+            <div *ngIf="attachmentLoading" class="text-center position-absolute scu-progress-card w-100">
+                <div class="spinner-border text-primary scu-spinner"></div>
+                <span class="d-block mt-3">{{attachmentLoading}}</span>
+            </div>
         </div>
         <div class="scu-actions">
             <button class="btn text-dark" (click)="toggleEmojiPicker()"><i class="fas fa-laugh"></i></button>

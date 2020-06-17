@@ -20,6 +20,7 @@ export class SquirrelChatUiComponent implements OnInit {
     public showAttachmentsCard = false;
     public showMenuDropDown = false;
     public attachmentButtonRows: (AttachmentButton[])[] = [];
+    public attachmentLoading: string = undefined;
     private disableScrollDown = false;
     @Input() public messages: Message[] = [];
     @Input() public menuItems: string[] = [];
@@ -125,7 +126,11 @@ export class SquirrelChatUiComponent implements OnInit {
     }
 
     public attach(attachmentButton: AttachmentButton): void {
-        this.showAttachmentsCard = false;
+        if (attachmentButton.loadingIndicatorText) {
+            this.attachmentLoading = attachmentButton.loadingIndicatorText;
+        } else {
+            this.showAttachmentsCard = false;
+        }
         if (attachmentButton.isEmojiButton) {
             this.showEmojiPicker = true;
             return;
@@ -133,6 +138,8 @@ export class SquirrelChatUiComponent implements OnInit {
         this.attachmentClicked.emit({
             id: attachmentButton.id,
             setUrl: (url: string) => {
+                this.attachmentLoading = undefined;
+                this.showAttachmentsCard = false;
                 // eslint-disable-next-line no-alert
                 alert(`Got a response: "${url}"`);
             },

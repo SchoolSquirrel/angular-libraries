@@ -3,4 +3,5 @@ export interface AttachmentButton {
     icon: string,
     id: string,
     isEmojiButton?: boolean;
+    loadingIndicatorText?: string;
 }
