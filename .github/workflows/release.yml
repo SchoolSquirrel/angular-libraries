@@ -27,7 +27,7 @@ jobs:
     - name: Publish to NPM
       run: npm publish --access public
       env:
-        NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+        NPM_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
       working-directory: dist/squirrel-chat-ui
   release:
     name: Create a GitHub release
