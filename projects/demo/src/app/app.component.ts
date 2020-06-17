@@ -1,6 +1,8 @@
 /* eslint-disable no-alert */
 import { Component } from "@angular/core";
-import { Message, MessageStatus, AttachmentButton } from "squirrel-chat-ui";
+import {
+    Message, MessageStatus, AttachmentButton, User,
+} from "squirrel-chat-ui";
 
 @Component({
     selector: "app-root",
@@ -8,8 +10,8 @@ import { Message, MessageStatus, AttachmentButton } from "squirrel-chat-ui";
     styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
-    private user1 = { id: 1, name: "Güther" };
-    private user2 = { id: 2, name: "Tom" };
+    private user1: User = { id: 1, name: "Güther" };
+    private user2: User = { id: 2, name: "Tom" };
     public attachmentButtons: AttachmentButton[] = [
         {
             icon: "fas fa-upload",
