@@ -1,0 +1,47 @@
+name: Deploy to NPM
+
+on:
+  push:
+    branches:
+      - refs/tags/*
+jobs:
+  npm:
+    name: Release library to NPM
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+    - name: Use Node.js 10.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+    - name: Install Angular CLI
+      run: npm install -g @angular/cli
+    - name: Install dependencies
+      run: npm install
+    - name: Build library
+      run: ng build --prod squirrel-chat-ui
+    - name: Publish to NPM
+      run: npm publish --access public
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      working-directory: dist/squirrel-chat-ui
+    - name: Generate changelog
+      uses: scottbrenner/generate-changelog-action@master
+      env:
+        REPO: ${{ github.repository }}
+    - name: Create Release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: ${{ github.ref }}
+        body: |
+          ${{ steps.Changelog.outputs.changelog }}
+
+          View this library on npmjs.com: [https://www.npmjs.com/package/@schoolsquirrel/squirrel-chat-ui](https://www.npmjs.com/package/@schoolsquirrel/squirrel-chat-ui)
+        draft: true
+        prerelease: false
