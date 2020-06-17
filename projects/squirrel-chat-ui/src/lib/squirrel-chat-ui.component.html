@@ -1,7 +1,7 @@
-<div id="squirrel-chat-ui" class="text-left d-flex flex-column h-100">
-    <div id="scu-header" class="bg-light d-flex justify-content-between">
+<div class="text-left d-flex flex-column h-100 squirrel-chat-ui">
+    <div class="bg-light d-flex justify-content-between scu-header">
         <div class="scu-info px-3 py-2 flex-grow-1">
-            <img [src]="profileImageSource" class="float-left mr-3 mt-1" id="scu-avatar">
+            <img [src]="profileImageSource" class="float-left mr-3 mt-1 scu-avatar">
             <h3 class="mb-0">{{title}}</h3>
             <span>{{subtitle}}</span>
         </div>
@@ -20,7 +20,7 @@
             </div>
         </div>
     </div>
-    <div id="scu-body" class="flex-grow-1 p-4 overflow-auto" #scrollMe (scroll)="onScroll()">
+    <div class="scu-body flex-grow-1 p-4 overflow-auto" #scrollMe (scroll)="onScroll()">
         <div class="" *ngFor="let message of messages; let idx = index">
             <div class="scu-message-holder d-flex my-1" [class.justify-content-end]="message.fromMe">
                 <div class="scu-message px-2 py-1 position-relative" [class.scu-from-me]="message.fromMe">
@@ -43,9 +43,9 @@
             </div>
         </div>
     </div>
-    <div id="scu-footer" class="bg-light p-1 d-flex p-relative">
-        <emoji-mart id="scu-emoji-picker" [class.d-none]="!showEmojiPicker" (emojiSelect)="emojiSelected($event)"></emoji-mart>
-        <div id="scu-attachments" class="scu-card mx-4 bg-white" [class.d-none]="!showAttachmentsCard">
+    <div class="bg-light p-1 d-flex p-relative scu-footer">
+        <emoji-mart class="scu-emoji-picker" [class.d-none]="!showEmojiPicker" (emojiSelect)="emojiSelected($event)"></emoji-mart>
+        <div class="scu-attachments scu-card mx-4 bg-white" [class.d-none]="!showAttachmentsCard">
             <table class="text-center m-4" [style.visibility]="attachmentLoading ? 'hidden' : 'visible'">
                 <tr *ngFor="let attachmentButtonRow of attachmentButtonRows">
                     <td class="p-2" *ngFor="let attachmentButton of attachmentButtonRow">
