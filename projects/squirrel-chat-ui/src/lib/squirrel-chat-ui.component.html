@@ -63,7 +63,10 @@
         </div>
         <div class="scu-actions">
             <button class="btn text-dark" (click)="toggleEmojiPicker()"><i class="fas fa-laugh"></i></button>
-            <button class="btn text-dark" (click)="toggleAttachmentsCard()"><i class="fas fa-paperclip"></i></button>
+            <button class="btn text-dark position-relative" (click)="toggleAttachmentsCard()">
+                <i class="fas fa-paperclip"></i>
+                <div class="spinner-border scu-spinner position-absolute text-secondary" *ngIf="attachmentLoading"></div>
+            </button>
             <button class="btn text-dark"><i class="fas fa-edit"></i></button>
         </div>
         <div class="scu-input flex-grow-1">
