@@ -25,6 +25,7 @@ export class AppComponent {
             icon: "fas fa-smile",
             name: "Emoji",
             id: "emoji",
+            isEmojiButton: true,
         },
         {
             icon: "fas fa-map-marker-alt",

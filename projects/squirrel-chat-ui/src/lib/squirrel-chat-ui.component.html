@@ -49,7 +49,7 @@
             <table class="text-center">
                 <tr *ngFor="let attachmentButtonRow of attachmentButtonRows">
                     <td class="p-2" *ngFor="let attachmentButton of attachmentButtonRow">
-                        <button class="btn text-primary" (click)="attach(attachmentButton.id)">
+                        <button class="btn text-primary" (click)="attach(attachmentButton)">
                             <i [class]="'fa-2x '+attachmentButton.icon"></i><br>
                             {{attachmentButton.name}}
                         </button>

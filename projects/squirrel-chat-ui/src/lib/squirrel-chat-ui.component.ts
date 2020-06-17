@@ -124,10 +124,14 @@ export class SquirrelChatUiComponent implements OnInit {
         this.messageInput.nativeElement.focus();
     }
 
-    public attach(id: string): void {
+    public attach(attachmentButton: AttachmentButton): void {
         this.showAttachmentsCard = false;
+        if (attachmentButton.isEmojiButton) {
+            this.showEmojiPicker = true;
+            return;
+        }
         this.attachmentClicked.emit({
-            id,
+            id: attachmentButton.id,
             setUrl: (url: string) => {
                 // eslint-disable-next-line no-alert
                 alert(`Got a response: "${url}"`);
