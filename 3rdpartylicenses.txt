@@ -60,6 +60,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
+@schoolsquirrel/squirrel-chat-ui
+
 core-js
 MIT
 Copyright (c) 2014-2020 Denis Pushkarev
@@ -337,8 +339,6 @@ Apache-2.0
  limitations under the License.
  
 
-
-squirrel-chat-ui
 
 zone.js
 MIT
