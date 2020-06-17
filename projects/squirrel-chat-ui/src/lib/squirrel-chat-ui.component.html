@@ -47,43 +47,11 @@
         <emoji-mart id="scu-emoji-picker" [class.d-none]="!showEmojiPicker" (emojiSelect)="emojiSelected($event)"></emoji-mart>
         <div id="scu-attachments" class="scu-card p-4 mx-4 bg-white" [class.d-none]="!showAttachmentsCard">
             <table class="text-center">
-                <tr>
-                    <td class="p-2">
+                <tr *ngFor="let attachmentButtonRow of attachmentButtonRows">
+                    <td class="p-2" *ngFor="let attachmentButton of attachmentButtonRow">
                         <button class="btn text-primary">
-                            <i class="fas fa-2x fa-upload"></i><br>
-                            Hochladen
-                        </button>
-                    </td>
-                    <td class="p-2">
-                        <button class="btn text-primary">
-                            <i class="fas fa-2x fa-folder-open"></i><br>
-                            Auswählen
-                        </button>
-                    </td>
-                    <td class="p-2">
-                        <button class="btn text-primary">
-                            <i class="fas fa-2x fa-smile"></i><br>
-                            Emoji
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="p-2">
-                        <button class="btn text-primary">
-                            <i class="fas fa-2x fa-map-marker-alt"></i><br>
-                            Standort
-                        </button>
-                    </td>
-                    <td class="p-2">
-                        <button class="btn text-primary">
-                            <i class="fas fa-2x fa-video"></i><br>
-                            Video
-                        </button>
-                    </td>
-                    <td class="p-2">
-                        <button class="btn text-primary">
-                            <i class="fas fa-2x fa-microphone"></i><br>
-                            Audio
+                            <i [class]="'fa-2x '+attachmentButton.icon"></i><br>
+                            {{attachmentButton.name}}
                         </button>
                     </td>
                 </tr>

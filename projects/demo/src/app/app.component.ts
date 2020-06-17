@@ -1,6 +1,6 @@
 /* eslint-disable no-alert */
 import { Component } from "@angular/core";
-import { Message, MessageStatus } from "squirrel-chat-ui";
+import { Message, MessageStatus, AttachmentButton } from "squirrel-chat-ui";
 
 @Component({
     selector: "app-root",
@@ -10,6 +10,38 @@ import { Message, MessageStatus } from "squirrel-chat-ui";
 export class AppComponent {
     private user1 = { id: 1, name: "Güther" };
     private user2 = { id: 2, name: "Tom" };
+    public attachmentButtons: AttachmentButton[] = [
+        {
+            icon: "fas fa-upload",
+            name: "Hochladen",
+            id: "upload",
+        },
+        {
+            icon: "fas fa-folder-open",
+            name: "Auswählen",
+            id: "choose",
+        },
+        {
+            icon: "fas fa-smile",
+            name: "Emoji",
+            id: "emoji",
+        },
+        {
+            icon: "fas fa-map-marker-alt",
+            name: "Standort",
+            id: "location",
+        },
+        {
+            icon: "fas fa-video",
+            name: "Video",
+            id: "video",
+        },
+        {
+            icon: "fas fa-microphone",
+            name: "Audio",
+            id: "audio",
+        },
+    ]
     public messages: Message[] = [
         {
             id: 0,

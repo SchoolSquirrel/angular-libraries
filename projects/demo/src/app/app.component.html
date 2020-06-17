@@ -2,6 +2,6 @@
     <h1>Demo for <code>squirrel-chat-ui</code></h1>
     <main class="mt-5 vh-50">
         <squirrel-chat-ui [messages]="messages" (audioCallClicked)="onAudioCallClicked()" (videoCallClicked)="onVideoCallClicked()" (menuItemClicked)="onMenuItemClicked($event)" [menuItems]="menuItems" (messageSent)="onMessageSent($event)" profileImageSource="https://placekitten.com/500/500"
-            title="Max Mustermann" subtitle="Last seen: 6:59 PM yesterday"></squirrel-chat-ui>
+            title="Max Mustermann" subtitle="Last seen: 6:59 PM yesterday" [attachmentButtons]="attachmentButtons"></squirrel-chat-ui>
     </main>
 </div>

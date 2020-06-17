@@ -4,6 +4,7 @@ import {
 import { Message } from "./Message";
 import { MessageStatus } from "./MessageStatus";
 import { MessageReactions } from "./MessageReactions";
+import { AttachmentButton } from "./AttachmentButton";
 
 @Component({
     selector: "squirrel-chat-ui",
@@ -18,12 +19,24 @@ export class SquirrelChatUiComponent implements OnInit {
     public reactions = Object.values(MessageReactions);
     public showAttachmentsCard = false;
     public showMenuDropDown = false;
+    public attachmentButtonRows: (AttachmentButton[])[] = [];
     private disableScrollDown = false;
     @Input() public messages: Message[] = [];
     @Input() public menuItems: string[] = [];
     @Input() public profileImageSource = "";
     @Input() public title = "";
     @Input() public subtitle = "";
+    get attachmentButtons(): AttachmentButton[] {
+        return ([] as AttachmentButton[]).concat(...this.attachmentButtonRows);
+    }
+    @Input()
+    set attachmentButtons(buttons: AttachmentButton[]) {
+        const half = Math.floor(buttons.length / 2);
+        this.attachmentButtonRows = [
+            buttons.slice(0, half),
+            buttons.slice(half, buttons.length),
+        ];
+    }
     @Output() videoCallClicked = new EventEmitter<void>();
     @Output() audioCallClicked = new EventEmitter<void>();
     @Output() menuItemClicked = new EventEmitter<string>();
