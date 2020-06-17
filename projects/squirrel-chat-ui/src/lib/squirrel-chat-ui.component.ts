@@ -41,6 +41,7 @@ export class SquirrelChatUiComponent implements OnInit {
     @Output() audioCallClicked = new EventEmitter<void>();
     @Output() menuItemClicked = new EventEmitter<string>();
     @Output() messageSent = new EventEmitter<Message>();
+    @Output() attachmentClicked = new EventEmitter<{id: string, setUrl:(url: string) => void}>();
 
     constructor() {
         this.scrollToBottom();
@@ -121,5 +122,15 @@ export class SquirrelChatUiComponent implements OnInit {
         });
         this.message = "";
         this.messageInput.nativeElement.focus();
+    }
+
+    public attach(id: string): void {
+        this.attachmentClicked.emit({
+            id,
+            setUrl: (url: string) => {
+                // eslint-disable-next-line no-alert
+                alert(`Got a response: "${url}"`);
+            },
+        });
     }
 }

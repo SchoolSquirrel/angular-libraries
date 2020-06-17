@@ -154,4 +154,11 @@ export class AppComponent {
             }, 2000);
         }, 2000);
     }
+    public onAttachmentClicked({ id, setUrl }: {id: string, setUrl: (url: string) => void}): void {
+        if (id == "choose") {
+            setTimeout(() => {
+                setUrl("https://placeakitten.com/300/100");
+            }, 2000);
+        }
+    }
 }
