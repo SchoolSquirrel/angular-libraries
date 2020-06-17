@@ -1,8 +1,8 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 
+import { SquirrelChatUiModule } from "@schoolsquirrel/squirrel-chat-ui";
 import { AppComponent } from "./app.component";
-import { SquirrelChatUiModule } from "../../../squirrel-chat-ui/src/public-api";
 
 @NgModule({
     declarations: [
