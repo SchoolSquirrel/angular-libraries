@@ -29,6 +29,15 @@ export class SquirrelChatUiComponent implements OnInit {
     @Input() public title = "";
     @Input() public subtitle = "";
     @Input() public me: User = undefined;
+    @Input() public emojiMartOptions: {
+        i18n: any, enableSearch: boolean, showPreview: boolean, title: string, emoji: string,
+    } = {
+        i18n: undefined,
+        enableSearch: false,
+        showPreview: false,
+        title: "Pick an emoji",
+        emoji: "grinning",
+    };
     get attachmentButtons(): AttachmentButton[] {
         return ([] as AttachmentButton[]).concat(...this.attachmentButtonRows);
     }

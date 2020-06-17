@@ -53,7 +53,8 @@
         </div>
     </div>
     <div class="bg-light p-1 d-flex p-relative scu-footer">
-        <emoji-mart class="scu-emoji-picker" [class.d-none]="!showEmojiPicker" (emojiSelect)="emojiSelected($event)"></emoji-mart>
+        <emoji-mart class="scu-emoji-picker" [enableSearch]="emojiMartOptions.enableSearch" [i18n]="emojiMartOptions.i18n" [title]="emojiMartOptions.title" [emoji]="emojiMartOptions.emoji" [showPreview]="emojiMartOptions.showPreview" [class.d-none]="!showEmojiPicker"
+            (emojiSelect)="emojiSelected($event)"></emoji-mart>
         <div class="scu-attachments scu-card mx-4 bg-white" [class.d-none]="!showAttachmentsCard">
             <table class="text-center m-4" [style.visibility]="attachmentLoading ? 'hidden' : 'visible'">
                 <tr *ngFor="let attachmentButtonRow of attachmentButtonRows">

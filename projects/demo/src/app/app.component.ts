@@ -137,7 +137,43 @@ export class AppComponent {
         "Chat blockieren",
         "Email schreiben",
         "...",
-    ]
+    ];
+
+    public emojiMartOptions: {
+        i18n: any, enableSearch: boolean, showPreview: boolean, title: string, emoji: string,
+    } = {
+        i18n: {
+            search: "Search",
+            emojilist: "List of emoji",
+            notfound: "No Emoji Found",
+            clear: "Clear",
+            categories: {
+                search: "Search Results",
+                recent: "Frequently Used",
+                people: "Emojis & Leute",
+                nature: "Animals & Nature",
+                foods: "Food & Drink",
+                activity: "Activity",
+                places: "Travel & Places",
+                objects: "Objects",
+                symbols: "Symbols",
+                flags: "Flags",
+                custom: "Custom",
+            },
+            skintones: {
+                1: "Default Skin Tone",
+                2: "Light Skin Tone",
+                3: "Medium-Light Skin Tone",
+                4: "Medium Skin Tone",
+                5: "Medium-Dark Skin Tone",
+                6: "Dark Skin Tone",
+            },
+        },
+        enableSearch: true,
+        showPreview: true,
+        title: "Pick an emoji",
+        emoji: "grinning",
+    }
 
     public onAudioCallClicked(): void {
         alert("Audio call clicked!");
