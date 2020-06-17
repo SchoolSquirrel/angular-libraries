@@ -2,8 +2,9 @@ name: Deploy to NPM
 
 on:
   push:
-    branches:
-      - refs/tags/*
+    tags:
+      - '*'
+
 jobs:
   npm:
     name: Release library to NPM
