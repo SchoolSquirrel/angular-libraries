@@ -172,4 +172,9 @@ export class AppComponent {
             }, 2000);
         }
     }
+    public onReaction({
+        message, user, reaction, reacted,
+    }: { message: Message, user: User, reaction: string, reacted: boolean }): void {
+        alert(`User ${user.name} ${reacted ? "reacted" : "removed his reaction"} with '${reaction}' to the message #${message.id}`);
+    }
 }

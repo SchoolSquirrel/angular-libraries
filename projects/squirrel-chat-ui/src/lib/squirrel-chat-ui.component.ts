@@ -45,6 +45,9 @@ export class SquirrelChatUiComponent implements OnInit {
     @Output() menuItemClicked = new EventEmitter<string>();
     @Output() messageSent = new EventEmitter<Message>();
     @Output() attachmentClicked = new EventEmitter<{id: string, setUrl:(url: string) => void}>();
+    @Output() reaction = new EventEmitter<
+        { message: Message, user: User, reaction: string, reacted: boolean }
+    >();
 
     constructor() {
         this.scrollToBottom();
@@ -158,10 +161,18 @@ export class SquirrelChatUiComponent implements OnInit {
         }
         const existingIdx = this.messages[messageIdx].reactions[reaction]
             .findIndex((u) => u.id == this.me.id);
+        let reacted = true;
         if (existingIdx > -1) {
             this.messages[messageIdx].reactions[reaction].splice(existingIdx, 1);
+            reacted = false;
         } else {
             this.messages[messageIdx].reactions[reaction].push(this.me);
         }
+        this.reaction.emit({
+            message: this.messages[messageIdx],
+            reaction,
+            reacted,
+            user: this.me,
+        });
     }
 }
