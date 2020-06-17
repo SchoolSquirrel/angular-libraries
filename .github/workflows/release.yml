@@ -17,17 +17,24 @@ jobs:
     - name: Use Node.js 10.x
       uses: actions/setup-node@v1
       with:
-        node-version: '10.x'
+        node-version: '12.x'
+        registry-url: 'https://registry.npmjs.org'
     - name: Install Angular CLI
       run: npm install -g @angular/cli
     - name: Install dependencies
       run: npm install
     - name: Build library
       run: ng build --prod squirrel-chat-ui
+    - name: Configure npm
+      run: npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
+      env:
+        CI: true
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN  }}
     - name: Publish to NPM
       run: npm publish --access public
       env:
-        NPM_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+        CI: true
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN  }}
       working-directory: dist/squirrel-chat-ui
   release:
     name: Create a GitHub release
