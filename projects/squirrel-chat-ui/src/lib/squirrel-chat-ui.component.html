@@ -25,7 +25,9 @@
             <div class="scu-message-holder d-flex my-1" [class.justify-content-end]="message.fromMe">
                 <div class="scu-message px-2 py-1 position-relative" [class.scu-from-me]="message.fromMe">
                     <div class="scu-message-actions bg-white position-absolute p-1 pointer-event scu-shadow">
-                        <button class="btn py-0 px-1" *ngFor="let reaction of reactions"><ngx-emoji [emoji]="reaction" size="24"></ngx-emoji></button>
+                        <button class="btn py-0 px-1" *ngFor="let reaction of reactions" (click)="react(idx, reaction)">
+                            <ngx-emoji [emoji]="reaction" size="24"></ngx-emoji>
+                        </button>
                         <span class="scu-divider mx-1"></span>
                         <button (focus)="message.showDropDown = true" (blur)="message.showDropDown = false" class="btn"><i class="fas fa-ellipsis-h pb-2 "></i></button>
                         <div class="dropdown-menu dropdown-menu-right scu-dropdown" [class.show]="message.showDropDown">
@@ -35,6 +37,13 @@
                         </div>
                     </div>
                     <span class="scu-user" *ngIf="!message.fromMe && !isContinuing(message)"><b>{{message.sender.name}}</b></span>
+                    <span class="scu-reactions float-right">
+                        <span class="mr-1" *ngFor="let reaction of message.reactions | keyvalue">
+                            <ng-container *ngIf="reaction.value.length > 0">
+                                <ngx-emoji class="mr-1" [emoji]="reaction.key" size="15"></ngx-emoji>{{reaction.value.length}}
+                            </ng-container >
+                        </span>
+                    </span>
                     <span class="d-block">{{message.text}}</span>
                     <div class="text-right text-muted">
                         <small>{{message.date | date:'shortTime'}} <i *ngIf="message.fromMe" [class]="getStatusIconClass(message)"></i></small>

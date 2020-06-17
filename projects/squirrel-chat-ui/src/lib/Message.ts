@@ -8,4 +8,5 @@ export interface Message {
     sender: User;
     status?: MessageStatus;
     date: Date;
+    reactions?: Record<string, User[]>;
 }

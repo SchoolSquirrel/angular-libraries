@@ -17,7 +17,7 @@ export class SquirrelChatUiComponent implements OnInit {
     @ViewChild("messageInput", { static: true }) private messageInput: ElementRef;
     public message = "";
     public showEmojiPicker = false;
-    public reactions = Object.values(MessageReactions);
+    public reactions = MessageReactions;
     public showAttachmentsCard = false;
     public showMenuDropDown = false;
     public attachmentButtonRows: (AttachmentButton[])[] = [];
@@ -146,5 +146,22 @@ export class SquirrelChatUiComponent implements OnInit {
                 alert(`Got a response: "${url}"`);
             },
         });
+    }
+
+    public react(messageIdx: number, reaction: string): void {
+        if (!this.messages[messageIdx].reactions) {
+            this.messages[messageIdx].reactions = {};
+        }
+        if (!(this.messages[messageIdx].reactions[reaction]
+            && this.messages[messageIdx].reactions[reaction].length > 0)) {
+            this.messages[messageIdx].reactions[reaction] = [];
+        }
+        const existingIdx = this.messages[messageIdx].reactions[reaction]
+            .findIndex((u) => u.id == this.me.id);
+        if (existingIdx > -1) {
+            this.messages[messageIdx].reactions[reaction].splice(existingIdx, 1);
+        } else {
+            this.messages[messageIdx].reactions[reaction].push(this.me);
+        }
     }
 }
