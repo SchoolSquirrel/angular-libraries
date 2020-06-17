@@ -125,6 +125,7 @@ export class SquirrelChatUiComponent implements OnInit {
     }
 
     public attach(id: string): void {
+        this.showAttachmentsCard = false;
         this.attachmentClicked.emit({
             id,
             setUrl: (url: string) => {
