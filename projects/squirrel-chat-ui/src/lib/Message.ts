@@ -1,13 +1,11 @@
 import { MessageStatus } from "./MessageStatus";
+import { User } from "./User";
 
 export interface Message {
     id: number;
     text: string;
     fromMe: boolean;
-    sender: {
-        id: number;
-        name: string;
-    };
+    sender: User;
     status?: MessageStatus;
     date: Date;
 }

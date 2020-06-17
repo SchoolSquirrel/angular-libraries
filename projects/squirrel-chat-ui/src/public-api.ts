@@ -7,3 +7,4 @@ export * from "./lib/squirrel-chat-ui.module";
 export * from "./lib/Message";
 export * from "./lib/MessageStatus";
 export * from "./lib/AttachmentButton";
+export * from "./lib/User";
