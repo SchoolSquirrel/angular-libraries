@@ -5,6 +5,7 @@ import { Message } from "./Message";
 import { MessageStatus } from "./MessageStatus";
 import { MessageReactions } from "./MessageReactions";
 import { AttachmentButton } from "./AttachmentButton";
+import { User } from "./User";
 
 @Component({
     selector: "squirrel-chat-ui",
@@ -27,6 +28,7 @@ export class SquirrelChatUiComponent implements OnInit {
     @Input() public profileImageSource = "";
     @Input() public title = "";
     @Input() public subtitle = "";
+    @Input() public me: User = undefined;
     get attachmentButtons(): AttachmentButton[] {
         return ([] as AttachmentButton[]).concat(...this.attachmentButtonRows);
     }
@@ -112,7 +114,7 @@ export class SquirrelChatUiComponent implements OnInit {
             date: new Date(),
             fromMe: true,
             text: this.message,
-            sender: undefined,
+            sender: this.me,
             id: undefined,
             status: MessageStatus.Waiting,
         };
