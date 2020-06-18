@@ -56,6 +56,7 @@ export class SquirrelChatUiComponent implements OnInit {
     @Output() audioCallClicked = new EventEmitter<void>();
     @Output() menuItemClicked = new EventEmitter<string>();
     @Output() messageSent = new EventEmitter<Message>();
+    @Output() messageEdited = new EventEmitter<Message>();
     @Output() attachmentClicked = new EventEmitter<{id: string, setUrl:(url: string) => void}>();
     @Output() reaction = new EventEmitter<
         { message: Message, user: User, reaction: string, reacted: boolean }
@@ -224,7 +225,7 @@ export class SquirrelChatUiComponent implements OnInit {
 
     public finishEditing(idx: number, save: boolean): void {
         if (save) {
-            //
+            this.messageEdited.emit(this.messages[idx]);
         } else {
             this.messages[idx].text = this.oldMessage;
         }
