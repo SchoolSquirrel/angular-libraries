@@ -213,4 +213,7 @@ export class AppComponent {
     }: { message: Message, user: User, reaction: string, reacted: boolean }): void {
         alert(`User ${user.name} ${reacted ? "reacted" : "removed his reaction"} with '${reaction}' to the message #${message.id}`);
     }
+    public onMessageEdited(message: Message): void {
+        alert(`Message #${message.id} was editeed. New text: '${message.text}'`);
+    }
 }
