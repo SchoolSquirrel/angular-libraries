@@ -8,6 +8,7 @@ export interface Message {
     sender: User;
     status?: MessageStatus;
     edited?: boolean;
+    citation?: number;
     date: Date;
     reactions?: Record<string, User[]>;
 }

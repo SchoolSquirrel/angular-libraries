@@ -120,6 +120,7 @@ export class AppComponent {
             id: 9,
             fromMe: true,
             text: "Sent",
+            citation: 8,
             sender: this.me,
             status: MessageStatus.Sent,
             date: new Date("2020-06-16 10:55"),
@@ -128,7 +129,8 @@ export class AppComponent {
         {
             id: 10,
             fromMe: true,
-            text: "Waiting. Also a very long message... Maybe multiple lines? Also a very long message... Maybe multiple lines? Also a very long message... Maybe multiple lines? Also a very long message... Maybe multiple lines? Also a very long message... Maybe multiple lines? Also a very long message... Maybe multiple lines? Also a very long message... Maybe multiple lines?",
+            text: "Waiting. Also a very long message... Maybe multiple lines? Also a very long message... Maybe multiple lines?",
+            citation: 4,
             sender: this.me,
             status: MessageStatus.Waiting,
             date: new Date("2020-06-16 10:59"),

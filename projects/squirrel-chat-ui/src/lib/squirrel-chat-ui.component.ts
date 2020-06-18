@@ -24,6 +24,7 @@ export class SquirrelChatUiComponent implements OnInit {
     public showMenuDropDown = false;
     public attachmentButtonRows: (AttachmentButton[])[] = [];
     public attachmentLoading: string = undefined;
+    public citeMessageIdx: number;
     private disableScrollDown = false;
     @Input() public messages: Message[] = [];
     @Input() public menuItems: string[] = [];
@@ -31,7 +32,9 @@ export class SquirrelChatUiComponent implements OnInit {
     @Input() public title = "";
     @Input() public subtitle = "";
     @Input() public me: User = undefined;
-    @Input() public i18n: { edit: string; discardDraft: string, edited: string } = { edit: "Edit", discardDraft: "Do you really want to discard your draft?", edited: "Bearbeitet" };
+    @Input() public i18n: { edit: string; discardDraft: string, edited: string, cite: string } = {
+        edit: "Edit", discardDraft: "Do you really want to discard your draft?", edited: "Bearbeitet", cite: "Zitieren",
+    };
     @Input() public emojiMartOptions: {
         i18n: any, enableSearch: boolean, showPreview: boolean, title: string, emoji: string,
     } = {
@@ -127,6 +130,7 @@ export class SquirrelChatUiComponent implements OnInit {
 
     public sendMessage(): void {
         const newMessage: Message = {
+            citation: this.citeMessageIdx ? this.messages[this.citeMessageIdx].id : undefined,
             date: new Date(),
             fromMe: true,
             text: this.message,
@@ -233,5 +237,11 @@ export class SquirrelChatUiComponent implements OnInit {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         this.messages[idx].editing = false;
+    }
+    public citeMessage(idx: number): void {
+        this.citeMessageIdx = idx;
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        this.messages[idx].showDropDown = false;
     }
 }
