@@ -244,5 +244,6 @@ export class SquirrelChatUiComponent implements OnInit {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         this.messages[idx].showDropDown = false;
+        this.messageInput.nativeElement.focus();
     }
 }
