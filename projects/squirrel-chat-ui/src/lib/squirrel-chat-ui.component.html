@@ -31,7 +31,7 @@
                         <span class="scu-divider mx-1"></span>
                         <button (focus)="message.showDropDown = true" class="btn"><i class="fas fa-ellipsis-h pb-2 "></i></button>
                         <div class="dropdown-menu dropdown-menu-right scu-dropdown" [class.show]="message.showDropDown">
-                            <button class="dropdown-item" (click)="editMessage(idx)">{{i18n.edit}}</button>
+                            <button *ngIf="message.fromMe" class="dropdown-item" (click)="editMessage(idx)">{{i18n.edit}}</button>
                         </div>
                     </div>
                     <div class="w-100">
