@@ -1,6 +1,6 @@
 {
     "name": "@schoolsquirrel/squirrel-chat-ui",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "peerDependencies": {
         "@angular/common": "^9.1.9",
         "@angular/core": "^9.1.9"
