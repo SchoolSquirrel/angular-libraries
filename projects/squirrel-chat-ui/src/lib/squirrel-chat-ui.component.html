@@ -34,14 +34,17 @@
                             <button class="dropdown-item" (click)="editMessage(idx)">{{i18n.edit}}</button>
                         </div>
                     </div>
-                    <span class="scu-user" *ngIf="!message.fromMe && !isContinuing(message)"><b>{{message.sender.name}}</b></span>
-                    <span class="scu-reactions float-right">
-                        <span class="mr-1" *ngFor="let reaction of message.reactions | keyvalue">
-                            <ng-container *ngIf="reaction.value.length > 0">
-                                <ngx-emoji class="mr-1" [emoji]="reaction.key" size="15"></ngx-emoji>{{reaction.value.length}}
-                            </ng-container >
+                    <div class="w-100">
+                        <span class="scu-user mr-3" *ngIf="!message.fromMe && !isContinuing(message)"><b>{{message.sender.name}}</b></span>
+                        <small class="text-muted mr-3" *ngIf="message.edited">{{i18n.edited}}</small>
+                        <span class="scu-reactions float-right">
+                            <span class="mr-1" *ngFor="let reaction of message.reactions | keyvalue">
+                                <ng-container *ngIf="reaction.value.length > 0">
+                                    <ngx-emoji class="mr-1" [emoji]="reaction.key" size="15"></ngx-emoji>{{reaction.value.length}}
+                                </ng-container >
+                            </span>
                         </span>
-                    </span>
+                    </div>
                     <span class="d-block scu-message-content" *ngIf="!message.editing">{{message.text}}</span>
                     <div *ngIf="message.editing" class="d-flex" [style.height]="message.editingSizes.height + 'px'" [style.width]="message.editingSizes.width + 'px'">
                         <textarea type="text" class="form-control" [(ngModel)]="message.text"></textarea>

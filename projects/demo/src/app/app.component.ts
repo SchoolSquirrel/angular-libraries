@@ -98,6 +98,7 @@ export class AppComponent {
             text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
             sender: this.otherUser,
             date: new Date("2020-06-16 10:50"),
+            edited: true,
         },
         {
             id: 7,
@@ -122,6 +123,7 @@ export class AppComponent {
             sender: this.me,
             status: MessageStatus.Sent,
             date: new Date("2020-06-16 10:55"),
+            edited: true,
         },
         {
             id: 10,

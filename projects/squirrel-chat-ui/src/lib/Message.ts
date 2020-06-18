@@ -7,6 +7,7 @@ export interface Message {
     fromMe: boolean;
     sender: User;
     status?: MessageStatus;
+    edited?: boolean;
     date: Date;
     reactions?: Record<string, User[]>;
 }

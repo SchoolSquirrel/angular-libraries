@@ -31,7 +31,7 @@ export class SquirrelChatUiComponent implements OnInit {
     @Input() public title = "";
     @Input() public subtitle = "";
     @Input() public me: User = undefined;
-    @Input() public i18n: { edit: string; discardDraft: string } = { edit: "Edit", discardDraft: "Do you really want to discard your draft?" };
+    @Input() public i18n: { edit: string; discardDraft: string, edited: string } = { edit: "Edit", discardDraft: "Do you really want to discard your draft?", edited: "Bearbeitet" };
     @Input() public emojiMartOptions: {
         i18n: any, enableSearch: boolean, showPreview: boolean, title: string, emoji: string,
     } = {
@@ -226,6 +226,7 @@ export class SquirrelChatUiComponent implements OnInit {
     public finishEditing(idx: number, save: boolean): void {
         if (save) {
             this.messageEdited.emit(this.messages[idx]);
+            this.messages[idx].edited = true;
         } else {
             this.messages[idx].text = this.oldMessage;
         }
