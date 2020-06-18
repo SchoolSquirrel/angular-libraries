@@ -17,8 +17,7 @@
     ],
     "paths": {
       "@schoolsquirrel/squirrel-chat-ui": [
-        "dist/squirrel-chat-ui/squirrel-chat-ui",
-        "dist/squirrel-chat-ui"
+        "dist/@schoolsquirrel/squirrel-chat-ui"
       ]
     }
   },

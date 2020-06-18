@@ -1,5 +1,5 @@
 import {
-    Component, OnInit, ViewChild, ElementRef, Input, Output, EventEmitter,
+    Component, OnInit, ViewChild, ElementRef, Input, Output, EventEmitter, ViewChildren, QueryList,
 } from "@angular/core";
 import { Message } from "./Message";
 import { MessageStatus } from "./MessageStatus";
@@ -15,7 +15,9 @@ import { User } from "./User";
 export class SquirrelChatUiComponent implements OnInit {
     @ViewChild("scrollMe", { static: true }) private messagesContainer: ElementRef;
     @ViewChild("messageInput", { static: true }) private messageInput: ElementRef;
+    @ViewChildren("messagesList") private messagesList: QueryList<ElementRef>;
     public message = "";
+    public oldMessage = ""; // save the original message when editing
     public showEmojiPicker = false;
     public reactions = MessageReactions;
     public showAttachmentsCard = false;
@@ -29,6 +31,7 @@ export class SquirrelChatUiComponent implements OnInit {
     @Input() public title = "";
     @Input() public subtitle = "";
     @Input() public me: User = undefined;
+    @Input() public i18n: { edit: string; discardDraft: string } = { edit: "Edit", discardDraft: "Do you really want to discard your draft?" };
     @Input() public emojiMartOptions: {
         i18n: any, enableSearch: boolean, showPreview: boolean, title: string, emoji: string,
     } = {
@@ -183,5 +186,50 @@ export class SquirrelChatUiComponent implements OnInit {
             reacted,
             user: this.me,
         });
+    }
+
+    public editMessage(idx: number): void {
+        for (const m of this.messages) {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            if (m.editing) {
+                // eslint-disable-next-line
+                if (confirm(this.i18n.discardDraft)) {
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore
+                    m.editing = false;
+                } else {
+                    return;
+                }
+            }
+        }
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        this.messages[idx].showDropDown = false;
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        this.messages[idx].editing = true;
+        let { width, height } = (this.messagesList.toArray()[idx].nativeElement as HTMLElement).querySelector(".scu-message-content").getBoundingClientRect();
+        if (!width || width < 200) {
+            width = 200;
+        }
+        if (!height || height < 40) {
+            height = 40;
+        }
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        this.messages[idx].editingSizes = { width, height };
+        this.oldMessage = this.messages[idx].text;
+    }
+
+    public finishEditing(idx: number, save: boolean): void {
+        if (save) {
+            //
+        } else {
+            this.messages[idx].text = this.oldMessage;
+        }
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        this.messages[idx].editing = false;
     }
 }

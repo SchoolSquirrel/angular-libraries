@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="scu-body flex-grow-1 p-4 overflow-auto" #scrollMe (scroll)="onScroll()">
-        <div class="" *ngFor="let message of messages; let idx = index">
+        <div class="" #messagesList *ngFor="let message of messages; let idx = index">
             <div class="scu-message-holder d-flex my-1" [class.justify-content-end]="message.fromMe">
                 <div class="scu-message px-2 py-1 position-relative" [class.scu-from-me]="message.fromMe">
                     <div class="scu-message-actions bg-white position-absolute p-1 pointer-event scu-shadow">
@@ -29,11 +29,9 @@
                             <ngx-emoji [emoji]="reaction" size="24"></ngx-emoji>
                         </button>
                         <span class="scu-divider mx-1"></span>
-                        <button (focus)="message.showDropDown = true" (blur)="message.showDropDown = false" class="btn"><i class="fas fa-ellipsis-h pb-2 "></i></button>
+                        <button (focus)="message.showDropDown = true" class="btn"><i class="fas fa-ellipsis-h pb-2 "></i></button>
                         <div class="dropdown-menu dropdown-menu-right scu-dropdown" [class.show]="message.showDropDown">
-                            <button ngbdropdownitem="" class="dropdown-item">Action - 1</button>
-                            <button ngbdropdownitem="" class="dropdown-item">Another Action</button>
-                            <button ngbdropdownitem="" class="dropdown-item">Something else is here</button>
+                            <button class="dropdown-item" (click)="editMessage(idx)">{{i18n.edit}}</button>
                         </div>
                     </div>
                     <span class="scu-user" *ngIf="!message.fromMe && !isContinuing(message)"><b>{{message.sender.name}}</b></span>
@@ -44,7 +42,15 @@
                             </ng-container >
                         </span>
                     </span>
-                    <span class="d-block">{{message.text}}</span>
+                    <span class="d-block scu-message-content" *ngIf="!message.editing">{{message.text}}</span>
+                    <div *ngIf="message.editing" class="d-flex" [style.height]="message.editingSizes.height + 'px'" [style.width]="message.editingSizes.width + 'px'">
+                        <textarea type="text" class="form-control" [(ngModel)]="message.text"></textarea>
+                        <div class="d-flex mt-auto scu-edit-buttons">
+                            <button class="btn p-1 m-0" (click)="finishEditing(idx, false)"><i class="fas fa-times"></i></button>
+                            <button class="btn p-1 m-0" (click)="finishEditing(idx, true)"><i class="fas fa-check"></i></button>
+                        </div>
+                    </div>
+
                     <div class="text-right text-muted">
                         <small>{{message.date | date:'shortTime'}} <i *ngIf="message.fromMe" [class]="getStatusIconClass(message)"></i></small>
                     </div>
