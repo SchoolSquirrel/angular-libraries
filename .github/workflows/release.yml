@@ -35,7 +35,7 @@ jobs:
       env:
         CI: true
         NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN  }}
-      working-directory: dist/squirrel-chat-ui
+      working-directory: dist/@schoolsquirrel/squirrel-chat-ui
   release:
     name: Create a GitHub release
     runs-on: ubuntu-latest
