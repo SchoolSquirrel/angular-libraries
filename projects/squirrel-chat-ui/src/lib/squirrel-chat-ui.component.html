@@ -52,7 +52,7 @@
                         <small class="float-right ml-4 text-muted">{{(messages | filter:'id':message.citation).date | date:'shortTime'}}</small>
                     </div>
                     <span class="d-block scu-message-content" *ngIf="!message.editing">{{message.text}}</span>
-                    <div *ngIf="message.editing" class="d-flex" [style.height]="message.editingSizes.height + 'px'" [style.width]="message.editingSizes.width + 'px'">
+                    <div *ngIf="message.editing" class="d-flex" [style.minHeight]="message.editingSizes.height + 'px'" [style.minWidth]="message.editingSizes.width + 'px'">
                         <textarea type="text" class="form-control" [(ngModel)]="message.text"></textarea>
                         <div class="d-flex mt-auto scu-edit-buttons">
                             <button class="btn p-1 m-0" (click)="finishEditing(idx, false)"><i class="fas fa-times"></i></button>
