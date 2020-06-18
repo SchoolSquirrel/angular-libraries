@@ -246,4 +246,10 @@ export class SquirrelChatUiComponent implements OnInit {
         this.messages[idx].showDropDown = false;
         this.messageInput.nativeElement.focus();
     }
+    public goToMessage(id: number): void {
+        const message = document.getElementById(`message-${id}`);
+        if (message) {
+            message.scrollIntoView({ behavior: "smooth" });
+        }
+    }
 }

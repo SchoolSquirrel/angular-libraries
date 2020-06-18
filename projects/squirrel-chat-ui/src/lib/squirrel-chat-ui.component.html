@@ -22,7 +22,7 @@
     </div>
     <div class="scu-body flex-grow-1 p-4 overflow-auto" #scrollMe (scroll)="onScroll()">
         <div class="" #messagesList *ngFor="let message of messages; let idx = index">
-            <div class="scu-message-holder d-flex my-1" [class.justify-content-end]="message.fromMe">
+            <div [id]="'message-' + message.id" class="scu-message-holder d-flex my-1" [class.justify-content-end]="message.fromMe">
                 <div class="scu-message px-2 py-1 position-relative" [class.scu-from-me]="message.fromMe">
                     <div class="scu-message-actions bg-white position-absolute p-1 pointer-event scu-shadow">
                         <button class="btn py-0 px-1" *ngFor="let reaction of reactions" (click)="react(idx, reaction)">
@@ -46,7 +46,7 @@
                             </span>
                         </span>
                     </div>
-                    <div *ngIf="message.citation" class="d-block w-100 bg-light text-muted p-2 pt-1 pb-4 scu-citation">
+                    <div *ngIf="message.citation" class="d-block w-100 bg-light text-muted p-2 pt-1 pb-4 scu-citation" (click)="goToMessage(message.citation)">
                         <span class="scu-user d-block"><b>{{(messages | filter:'id':message.citation).sender.name}}</b></span>
                         <small class="scu-citation-content d-block overflow-hidden">{{(messages | filter:'id':message.citation).text}}</small>
                         <small class="float-right ml-4 text-muted">{{(messages | filter:'id':message.citation).date | date:'shortTime'}}</small>
@@ -97,7 +97,7 @@
             </div>
         </div>
         <div class="scu-input flex-grow-1">
-            <div *ngIf="citeMessageIdx" class="d-block w-100 bg-light text-muted p-2 pt-1 pb-4 scu-citation">
+            <div *ngIf="citeMessageIdx" class="d-block w-100 bg-light text-muted p-2 pt-1 pb-4 scu-citation" (click)="goToMessage(messages[citeMessageIdx].id)">
                 <button class="btn float-right p-0 scu-close" (click)="citeMessageIdx = undefined"><i class="fas fa-times"></i></button>
                 <span class="scu-user d-block"><b>{{messages[citeMessageIdx].sender.name}}</b></span>
                 <small class="scu-citation-content  d-block overflow-hidden">{{messages[citeMessageIdx].text}}</small>
