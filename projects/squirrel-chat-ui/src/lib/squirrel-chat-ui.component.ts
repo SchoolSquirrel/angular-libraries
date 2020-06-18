@@ -145,6 +145,7 @@ export class SquirrelChatUiComponent implements OnInit {
         });
         this.message = "";
         this.messageInput.nativeElement.focus();
+        this.citeMessageIdx = undefined;
     }
 
     public attach(attachmentButton: AttachmentButton): void {
