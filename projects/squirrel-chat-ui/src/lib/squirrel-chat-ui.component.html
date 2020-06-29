@@ -1,5 +1,5 @@
 <div class="text-left d-flex flex-column h-100 squirrel-chat-ui">
-    <div class="bg-light d-flex justify-content-between scu-header">
+    <div class="bg-light d-flex justify-content-between scu-header" *ngIf="!hideHeader">
         <div class="scu-info px-3 py-2 flex-grow-1">
             <img [src]="profileImageSource" class="float-left mr-3 mt-1 scu-avatar">
             <h3 class="mb-0">{{title}}</h3>

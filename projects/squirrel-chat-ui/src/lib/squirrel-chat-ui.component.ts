@@ -32,6 +32,7 @@ export class SquirrelChatUiComponent implements OnInit {
     @Input() public title = "";
     @Input() public subtitle = "";
     @Input() public me: User = undefined;
+    @Input() public hideHeader = false;
     @Input() public i18n: { edit: string; discardDraft: string, edited: string, cite: string } = {
         edit: "Edit", discardDraft: "Do you really want to discard your draft?", edited: "Bearbeitet", cite: "Zitieren",
     };
