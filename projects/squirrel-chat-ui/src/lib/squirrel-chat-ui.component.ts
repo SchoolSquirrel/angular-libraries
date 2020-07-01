@@ -131,7 +131,9 @@ export class SquirrelChatUiComponent implements OnInit {
 
     public sendMessage(): void {
         const newMessage: Message = {
-            citation: this.citeMessageIdx ? this.messages[this.citeMessageIdx].id : undefined,
+            citation: this.citeMessageIdx !== undefined
+                ? this.messages[this.citeMessageIdx].id
+                : undefined,
             date: new Date(),
             fromMe: true,
             text: this.message,

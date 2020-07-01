@@ -97,7 +97,7 @@
             </div>
         </div>
         <div class="scu-input flex-grow-1">
-            <div *ngIf="citeMessageIdx" class="d-block w-100 bg-light text-muted p-2 pt-1 pb-4 scu-citation" (click)="goToMessage(messages[citeMessageIdx].id)">
+            <div *ngIf="citeMessageIdx !== undefined && messages[citeMessageIdx]" class="d-block w-100 bg-light text-muted p-2 pt-1 pb-4 scu-citation" (click)="goToMessage(messages[citeMessageIdx].id)">
                 <button class="btn float-right p-0 scu-close" (click)="citeMessageIdx = undefined"><i class="fas fa-times"></i></button>
                 <span class="scu-user d-block"><b>{{messages[citeMessageIdx].sender.name}}</b></span>
                 <small class="scu-citation-content  d-block overflow-hidden">{{messages[citeMessageIdx].text}}</small>
