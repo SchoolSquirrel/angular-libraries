@@ -48,7 +48,7 @@
                     </div>
                     <div *ngIf="message.citation" class="d-block w-100 bg-light text-muted p-2 pt-1 pb-4 scu-citation" (click)="goToMessage(message.citation)">
                         <span class="scu-user d-block"><b>{{(messages | filter:'id':message.citation).sender.name}}</b></span>
-                        <small class="scu-citation-content d-block overflow-hidden">{{(messages | filter:'id':message.citation).text}}</small>
+                        <small class="scu-citation-content d-block overflow-hidden" [innerHTML]="(messages | filter:'id':message.citation).text | utf8EmojisToImages:undefined:18"></small>
                         <small class="float-right ml-4 text-muted">{{(messages | filter:'id':message.citation).date | date:'shortTime'}}</small>
                     </div>
                     <div class="d-block scu-message-content" *ngIf="!message.editing" [innerHTML]="message.text | utf8EmojisToImages"></div>
@@ -100,7 +100,7 @@
             <div *ngIf="citeMessageIdx !== undefined && messages[citeMessageIdx]" class="d-block w-100 bg-light text-muted p-2 pt-1 pb-4 scu-citation" (click)="goToMessage(messages[citeMessageIdx].id)">
                 <button class="btn float-right p-0 scu-close" (click)="citeMessageIdx = undefined"><i class="fas fa-times"></i></button>
                 <span class="scu-user d-block"><b>{{messages[citeMessageIdx].sender.name}}</b></span>
-                <small class="scu-citation-content  d-block overflow-hidden">{{messages[citeMessageIdx].text}}</small>
+                <small class="scu-citation-content  d-block overflow-hidden" [innerHTML]="messages[citeMessageIdx].text | utf8EmojisToImages:undefined:18"></small>
                 <small class="float-right ml-4 text-muted">{{messages[citeMessageIdx].date | date:'shortTime'}}</small>
             </div>
             <input type="text" class="form-control w-100" [(ngModel)]="message" #messageInput>

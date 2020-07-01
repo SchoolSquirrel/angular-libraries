@@ -136,7 +136,7 @@ export class AppComponent {
             date: new Date("2020-06-16 10:59"),
         },
         {
-            id: 10,
+            id: 11,
             fromMe: true,
             text: "😀By the way, 😎 did you know that emojis are supported? 👍",
             sender: this.me,
