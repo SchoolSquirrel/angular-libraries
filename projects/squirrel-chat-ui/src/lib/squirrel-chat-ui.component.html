@@ -51,7 +51,7 @@
                         <small class="scu-citation-content d-block overflow-hidden">{{(messages | filter:'id':message.citation).text}}</small>
                         <small class="float-right ml-4 text-muted">{{(messages | filter:'id':message.citation).date | date:'shortTime'}}</small>
                     </div>
-                    <span class="d-block scu-message-content" *ngIf="!message.editing">{{message.text}}</span>
+                    <div class="d-block scu-message-content" *ngIf="!message.editing" [innerHTML]="message.text | utf8EmojisToImages"></div>
                     <div *ngIf="message.editing" class="d-flex" [style.minHeight]="message.editingSizes.height + 'px'" [style.minWidth]="message.editingSizes.width + 'px'">
                         <textarea type="text" class="form-control" [(ngModel)]="message.text"></textarea>
                         <div class="d-flex mt-auto scu-edit-buttons">

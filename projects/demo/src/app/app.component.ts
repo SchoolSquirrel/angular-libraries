@@ -135,6 +135,14 @@ export class AppComponent {
             status: MessageStatus.Waiting,
             date: new Date("2020-06-16 10:59"),
         },
+        {
+            id: 10,
+            fromMe: true,
+            text: "😀By the way, 😎 did you know that emojis are supported? 👍",
+            sender: this.me,
+            status: MessageStatus.Waiting,
+            date: new Date("2020-06-16 11:00"),
+        },
     ];
 
     public menuItems: string[] = [
