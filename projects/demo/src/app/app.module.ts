@@ -5,7 +5,7 @@ import { NgModule } from "@angular/core";
 import { SquirrelChatUiModule } from "@schoolsquirrel/squirrel-chat-ui";
 
 // used for local development
-//import { SquirrelChatUiModule } from "../../../squirrel-chat-ui/src/public-api";
+// import { SquirrelChatUiModule } from "../../../squirrel-chat-ui/src/public-api";
 
 import { AppComponent } from "./app.component";
 
