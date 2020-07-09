@@ -2,7 +2,12 @@
 import { Component } from "@angular/core";
 import {
     Message, MessageStatus, AttachmentButton, User,
-} from "@schoolsquirrel/squirrel-chat-ui";
+}
+// used for the demo
+from "@schoolsquirrel/squirrel-chat-ui";
+
+// used for local development
+//from "../../../squirrel-chat-ui/src/public-api";
 
 @Component({
     selector: "app-root",
