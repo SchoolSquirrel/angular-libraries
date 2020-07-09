@@ -1,10 +1,8 @@
 /* eslint-disable no-alert */
 import { Component } from "@angular/core";
-import {
-    Message, MessageStatus, AttachmentButton, User,
-}
+import {Message, MessageStatus, AttachmentButton, User,}
 // used for the demo
-from "@schoolsquirrel/squirrel-chat-ui";
+from "@schoolsquirrel/squirrel-chat-ui"; // eslint-disable-line
 
 // used for local development
 // from "../../../squirrel-chat-ui/src/public-api";
