@@ -24,7 +24,7 @@
         <div class="" #messagesList *ngFor="let message of messages; let idx = index">
             <div [id]="'message-' + message.id" class="scu-message-holder d-flex my-1" [class.justify-content-end]="message.fromMe">
                 <div class="scu-message px-2 py-1 position-relative" [class.scu-from-me]="message.fromMe">
-                    <div class="scu-message-actions bg-white position-absolute p-1 pointer-event scu-shadow">
+                    <div class="scu-message-actions bg-white position-absolute p-1 pointer-event scu-shadow" [class.message-actions-right-align]="message.fromMe" [class.message-actions-left-align]="!message.fromMe">
                         <button class="btn py-0 px-1" *ngFor="let reaction of reactions" (click)="react(idx, reaction)">
                             <ngx-emoji [emoji]="reaction" size="24"></ngx-emoji>
                         </button>
