@@ -29,7 +29,7 @@
                             <ngx-emoji [emoji]="reaction" size="24"></ngx-emoji>
                         </button>
                         <span class="scu-divider mx-1"></span>
-                        <button (focus)="message.showDropDown = true" class="btn"><i class="fas fa-ellipsis-h pb-2 "></i></button>
+                        <button (click)="message.showDropDown = !message.showDropDown" class="btn"><i class="fas fa-ellipsis-h pb-2 "></i></button>
                         <div class="dropdown-menu dropdown-menu-right scu-dropdown" [class.show]="message.showDropDown">
                             <button *ngIf="message.fromMe" class="dropdown-item" (click)="editMessage(idx)">{{i18n.edit}}</button>
                             <button class="dropdown-item" (click)="citeMessage(idx)">{{i18n.cite}}</button>
