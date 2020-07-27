@@ -42,6 +42,12 @@
                 left: unset;
                 right: 0;
             }
+            &.message-actions-right-align {
+                right: 0px;
+            }
+            &.message-actions-left-align {
+                left: 0px;
+            }
         }
         &:hover {
             .scu-message-actions {
@@ -74,12 +80,6 @@
         &:hover {
             background-color: #ebebeb !important;
         }
-    }
-    .scu-message-actions.message-actions-right-align {
-        right: 0px;
-    }
-    .scu-message-actions.message-actions-left-align {
-        left: 0px;
     }
 }
 
