@@ -8,11 +8,11 @@ import { AttachmentButton } from "./AttachmentButton";
 import { User } from "./User";
 
 @Component({
-    selector: "squirrel-chat-ui",
-    templateUrl: "./squirrel-chat-ui.component.html",
-    styleUrls: ["./squirrel-chat-ui.component.scss"],
+    selector: "chat-ui",
+    templateUrl: "./chat-ui.component.html",
+    styleUrls: ["./chat-ui.component.scss"],
 })
-export class SquirrelChatUiComponent implements OnInit {
+export class ChatUiComponent implements OnInit {
     @ViewChild("scrollMe", { static: true }) private messagesContainer: ElementRef;
     @ViewChild("messageInput", { static: true }) private messageInput: ElementRef;
     @ViewChildren("messagesList") private messagesList: QueryList<ElementRef>;

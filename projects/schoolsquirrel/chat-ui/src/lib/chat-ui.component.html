@@ -1,11 +1,11 @@
-<div class="text-left d-flex flex-column h-100 squirrel-chat-ui">
-    <div class="bg-light d-flex justify-content-between scu-header" *ngIf="!hideHeader">
-        <div class="scu-info px-3 py-2 flex-grow-1">
-            <img [src]="profileImageSource" class="float-left mr-3 mt-1 scu-avatar">
+<div class="text-left d-flex flex-column h-100 chat-ui">
+    <div class="bg-light d-flex justify-content-between cui-header" *ngIf="!hideHeader">
+        <div class="cui-info px-3 py-2 flex-grow-1">
+            <img [src]="profileImageSource" class="float-left mr-3 mt-1 cui-avatar">
             <h3 class="mb-0">{{title}}</h3>
             <span>{{subtitle}}</span>
         </div>
-        <div class="scu-actions d-flex align-items-center flex-column">
+        <div class="cui-actions d-flex align-items-center flex-column">
             <div class="my-auto">
                 <button class="btn text-primary" (click)="videoCallClicked.emit()"><i class="fas fa-video"></i></button>
                 <button class="btn text-primary" (click)="audioCallClicked.emit()"><i class="fas fa-phone-alt"></i></button>
@@ -20,25 +20,25 @@
             </div>
         </div>
     </div>
-    <div class="scu-body flex-grow-1 p-4 overflow-auto" #scrollMe (scroll)="onScroll()">
+    <div class="cui-body flex-grow-1 p-4 overflow-auto" #scrollMe (scroll)="onScroll()">
         <div class="" #messagesList *ngFor="let message of messages; let idx = index">
-            <div [id]="'message-' + message.id" class="scu-message-holder d-flex my-1" [class.justify-content-end]="message.fromMe">
-                <div class="scu-message px-2 py-1 position-relative" [class.scu-from-me]="message.fromMe">
-                    <div class="scu-message-actions bg-white position-absolute p-1 pointer-event scu-shadow" [class.message-actions-right-align]="message.fromMe" [class.message-actions-left-align]="!message.fromMe">
+            <div [id]="'message-' + message.id" class="cui-message-holder d-flex my-1" [class.justify-content-end]="message.fromMe">
+                <div class="cui-message px-2 py-1 position-relative" [class.cui-from-me]="message.fromMe">
+                    <div class="cui-message-actions bg-white position-absolute p-1 pointer-event cui-shadow" [class.message-actions-right-align]="message.fromMe" [class.message-actions-left-align]="!message.fromMe">
                         <button class="btn py-0 px-1" *ngFor="let reaction of reactions" (click)="react(idx, reaction)">
                             <ngx-emoji [emoji]="reaction" size="24"></ngx-emoji>
                         </button>
-                        <span class="scu-divider mx-1"></span>
+                        <span class="cui-divider mx-1"></span>
                         <button (click)="message.showDropDown = !message.showDropDown" class="btn"><i class="fas fa-ellipsis-h pb-2 "></i></button>
-                        <div class="dropdown-menu dropdown-menu-right scu-dropdown" [class.show]="message.showDropDown">
+                        <div class="dropdown-menu dropdown-menu-right cui-dropdown" [class.show]="message.showDropDown">
                             <button *ngIf="message.fromMe" class="dropdown-item" (click)="editMessage(idx)">{{i18n.edit}}</button>
                             <button class="dropdown-item" (click)="citeMessage(idx)">{{i18n.cite}}</button>
                         </div>
                     </div>
                     <div class="w-100">
-                        <span class="scu-user mr-3" *ngIf="!message.fromMe && !isContinuing(message)"><b>{{message.sender.name}}</b></span>
+                        <span class="cui-user mr-3" *ngIf="!message.fromMe && !isContinuing(message)"><b>{{message.sender.name}}</b></span>
                         <small class="text-muted mr-3" *ngIf="message.edited">{{i18n.edited}}</small>
-                        <span class="scu-reactions float-right">
+                        <span class="cui-reactions float-right">
                             <span class="mr-1" *ngFor="let reaction of message.reactions | keyvalue">
                                 <ng-container *ngIf="reaction.value.length > 0">
                                     <ngx-emoji class="mr-1" [emoji]="reaction.key" size="15"></ngx-emoji>{{reaction.value.length}}
@@ -46,15 +46,15 @@
                             </span>
                         </span>
                     </div>
-                    <div *ngIf="message.citation" class="d-block w-100 bg-light text-muted p-2 pt-1 pb-4 scu-citation" (click)="goToMessage(message.citation)">
-                        <span class="scu-user d-block"><b>{{(messages | filter:'id':message.citation).sender.name}}</b></span>
-                        <small class="scu-citation-content d-block overflow-hidden" [innerHTML]="(messages | filter:'id':message.citation).text | utf8EmojisToImages:undefined:18"></small>
+                    <div *ngIf="message.citation" class="d-block w-100 bg-light text-muted p-2 pt-1 pb-4 cui-citation" (click)="goToMessage(message.citation)">
+                        <span class="cui-user d-block"><b>{{(messages | filter:'id':message.citation).sender.name}}</b></span>
+                        <small class="cui-citation-content d-block overflow-hidden" [innerHTML]="(messages | filter:'id':message.citation).text | utf8EmojisToImages:undefined:18"></small>
                         <small class="float-right ml-4 text-muted">{{(messages | filter:'id':message.citation).date | date:'shortTime'}}</small>
                     </div>
-                    <div class="d-block scu-message-content" *ngIf="!message.editing" [innerHTML]="message.text | utf8EmojisToImages"></div>
+                    <div class="d-block cui-message-content" *ngIf="!message.editing" [innerHTML]="message.text | utf8EmojisToImages"></div>
                     <div *ngIf="message.editing" class="d-flex" [style.minHeight]="message.editingSizes.height + 'px'" [style.minWidth]="message.editingSizes.width + 'px'">
                         <textarea type="text" class="form-control" [(ngModel)]="message.text"></textarea>
-                        <div class="d-flex mt-auto scu-edit-buttons">
+                        <div class="d-flex mt-auto cui-edit-buttons">
                             <button class="btn p-1 m-0" (click)="finishEditing(idx, false)"><i class="fas fa-times"></i></button>
                             <button class="btn p-1 m-0" (click)="finishEditing(idx, true)"><i class="fas fa-check"></i></button>
                         </div>
@@ -67,10 +67,10 @@
             </div>
         </div>
     </div>
-    <div class="bg-light p-1 d-flex p-relative scu-footer">
-        <emoji-mart class="scu-emoji-picker" [enableSearch]="emojiMartOptions.enableSearch" [i18n]="emojiMartOptions.i18n" [title]="emojiMartOptions.title" [emoji]="emojiMartOptions.emoji" [showPreview]="emojiMartOptions.showPreview" [class.d-none]="!showEmojiPicker"
+    <div class="bg-light p-1 d-flex p-relative cui-footer">
+        <emoji-mart class="cui-emoji-picker" [enableSearch]="emojiMartOptions.enableSearch" [i18n]="emojiMartOptions.i18n" [title]="emojiMartOptions.title" [emoji]="emojiMartOptions.emoji" [showPreview]="emojiMartOptions.showPreview" [class.d-none]="!showEmojiPicker"
             (emojiSelect)="emojiSelected($event)"></emoji-mart>
-        <div class="scu-attachments scu-card mx-4 bg-white" [class.d-none]="!showAttachmentsCard">
+        <div class="cui-attachments cui-card mx-4 bg-white" [class.d-none]="!showAttachmentsCard">
             <table class="text-center m-4" [style.visibility]="attachmentLoading ? 'hidden' : 'visible'">
                 <tr *ngFor="let attachmentButtonRow of attachmentButtonRows">
                     <td class="p-2" *ngFor="let attachmentButton of attachmentButtonRow">
@@ -81,31 +81,31 @@
                     </td>
                 </tr>
             </table>
-            <div *ngIf="attachmentLoading" class="text-center position-absolute scu-progress-card w-100">
-                <div class="spinner-border text-primary scu-spinner"></div>
+            <div *ngIf="attachmentLoading" class="text-center position-absolute cui-progress-card w-100">
+                <div class="spinner-border text-primary cui-spinner"></div>
                 <span class="d-block mt-3">{{attachmentLoading}}</span>
             </div>
         </div>
-        <div class="scu-actions scu-actions-left d-flex justify-content-end flex-column">
+        <div class="cui-actions cui-actions-left d-flex justify-content-end flex-column">
             <div>
                 <button class="btn text-dark d-inline-block" (click)="toggleEmojiPicker()"><i class="fas fa-laugh"></i></button>
                 <button class="btn text-dark  d-inline-blockposition-relative" (click)="toggleAttachmentsCard()">
                     <i class="fas fa-paperclip"></i>
-                    <div class="spinner-border scu-spinner position-absolute text-secondary" *ngIf="attachmentLoading"></div>
+                    <div class="spinner-border cui-spinner position-absolute text-secondary" *ngIf="attachmentLoading"></div>
                 </button>
                 <button class="btn text-dark d-inline-block"><i class="fas fa-edit"></i></button>
             </div>
         </div>
-        <div class="scu-input flex-grow-1">
-            <div *ngIf="citeMessageIdx !== undefined && messages[citeMessageIdx]" class="d-block w-100 bg-light text-muted p-2 pt-1 pb-4 scu-citation" (click)="goToMessage(messages[citeMessageIdx].id)">
-                <button class="btn float-right p-0 scu-close" (click)="citeMessageIdx = undefined"><i class="fas fa-times"></i></button>
-                <span class="scu-user d-block"><b>{{messages[citeMessageIdx].sender.name}}</b></span>
-                <small class="scu-citation-content  d-block overflow-hidden" [innerHTML]="messages[citeMessageIdx].text | utf8EmojisToImages:undefined:18"></small>
+        <div class="cui-input flex-grow-1">
+            <div *ngIf="citeMessageIdx !== undefined && messages[citeMessageIdx]" class="d-block w-100 bg-light text-muted p-2 pt-1 pb-4 cui-citation" (click)="goToMessage(messages[citeMessageIdx].id)">
+                <button class="btn float-right p-0 cui-close" (click)="citeMessageIdx = undefined"><i class="fas fa-times"></i></button>
+                <span class="cui-user d-block"><b>{{messages[citeMessageIdx].sender.name}}</b></span>
+                <small class="cui-citation-content  d-block overflow-hidden" [innerHTML]="messages[citeMessageIdx].text | utf8EmojisToImages:undefined:18"></small>
                 <small class="float-right ml-4 text-muted">{{messages[citeMessageIdx].date | date:'shortTime'}}</small>
             </div>
             <input type="text" class="form-control w-100" [(ngModel)]="message" #messageInput>
         </div>
-        <div class="scu-actions d-flex justify-content-end flex-column">
+        <div class="cui-actions d-flex justify-content-end flex-column">
             <button class="btn text-dark mt-auto" (click)="sendMessage()" [disabled]="getTrimmedMessage() == '' ? 'disabled' : ''"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>

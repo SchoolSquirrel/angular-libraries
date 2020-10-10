@@ -1,7 +1,7 @@
 <div class="container text-center">
     <h1>Demo for <code>@schoolsquirrel/chat-ui</code></h1>
     <main class="mt-5 vh-50">
-        <squirrel-chat-ui [messages]="messages" (audioCallClicked)="onAudioCallClicked()" (videoCallClicked)="onVideoCallClicked()" (menuItemClicked)="onMenuItemClicked($event)" [menuItems]="menuItems" (messageSent)="onMessageSent($event)" profileImageSource="https://placekitten.com/500/500"
-            title="Max Mustermann" subtitle="Last seen: 6:59 PM yesterday" [attachmentButtons]="attachmentButtons" (attachmentClicked)="onAttachmentClicked($event)" [me]="me" (reaction)="onReaction($event)" [emojiMartOptions]="emojiMartOptions" (messageEdited)="onMessageEdited($event)"></squirrel-chat-ui>
+        <chat-ui [messages]="messages" (audioCallClicked)="onAudioCallClicked()" (videoCallClicked)="onVideoCallClicked()" (menuItemClicked)="onMenuItemClicked($event)" [menuItems]="menuItems" (messageSent)="onMessageSent($event)" profileImageSource="https://placekitten.com/500/500"
+            title="Max Mustermann" subtitle="Last seen: 6:59 PM yesterday" [attachmentButtons]="attachmentButtons" (attachmentClicked)="onAttachmentClicked($event)" [me]="me" (reaction)="onReaction($event)" [emojiMartOptions]="emojiMartOptions" (messageEdited)="onMessageEdited($event)"></chat-ui>
     </main>
 </div>

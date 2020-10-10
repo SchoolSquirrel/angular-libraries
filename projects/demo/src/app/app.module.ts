@@ -2,7 +2,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 
 // used for the demo
-import { SquirrelChatUiModule } from "@schoolsquirrel/chat-ui";
+import { ChatUiModule } from "@schoolsquirrel/chat-ui";
 
 import { AppComponent } from "./app.component";
 
@@ -12,7 +12,7 @@ import { AppComponent } from "./app.component";
     ],
     imports: [
         BrowserModule,
-        SquirrelChatUiModule,
+        ChatUiModule,
         BrowserModule,
     ],
     providers: [],

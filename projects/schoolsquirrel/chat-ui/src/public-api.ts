@@ -1,9 +1,9 @@
 /*
- * Public API Surface of squirrel-chat-ui
+ * Public API Surface of @schoolsquirrel/chat-ui
  */
 
-export * from "./lib/squirrel-chat-ui.component";
-export * from "./lib/squirrel-chat-ui.module";
+export * from "./lib/chat-ui.component";
+export * from "./lib/chat-ui.module";
 export * from "./lib/Message";
 export * from "./lib/MessageStatus";
 export * from "./lib/AttachmentButton";

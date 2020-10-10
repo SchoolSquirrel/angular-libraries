@@ -4,11 +4,11 @@ import { PickerModule } from "@ctrl/ngx-emoji-mart";
 import { BrowserModule } from "@angular/platform-browser";
 import { EmojiModule } from "@ctrl/ngx-emoji-mart/ngx-emoji";
 import { Utf8EmojisToImagesModule } from "ng-utf8-emojis-to-images";
-import { SquirrelChatUiComponent } from "./squirrel-chat-ui.component";
+import { ChatUiComponent } from "./chat-ui.component";
 import { FilterPipe } from "./filter.pipe";
 
 @NgModule({
-    declarations: [SquirrelChatUiComponent, FilterPipe],
+    declarations: [ChatUiComponent, FilterPipe],
     imports: [
         FormsModule,
         PickerModule,
@@ -16,6 +16,6 @@ import { FilterPipe } from "./filter.pipe";
         Utf8EmojisToImagesModule,
         BrowserModule,
     ],
-    exports: [SquirrelChatUiComponent],
+    exports: [ChatUiComponent],
 })
-export class SquirrelChatUiModule { }
+export class ChatUiModule { }
