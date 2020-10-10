@@ -4,7 +4,7 @@ import {
     Message, MessageStatus, AttachmentButton, User,
 }
 // used for the demo
-from "@schoolsquirrel/squirrel-chat-ui"; // eslint-disable-line
+from "@schoolsquirrel/chat-ui"; // eslint-disable-line
 
 // used for local development
 // from "../../../squirrel-chat-ui/src/public-api";

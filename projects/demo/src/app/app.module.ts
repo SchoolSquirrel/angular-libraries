@@ -2,7 +2,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 
 // used for the demo
-import { SquirrelChatUiModule } from "@schoolsquirrel/squirrel-chat-ui";
+import { SquirrelChatUiModule } from "@schoolsquirrel/chat-ui";
 
 // used for local development
 // import { SquirrelChatUiModule } from "../../../squirrel-chat-ui/src/public-api";
