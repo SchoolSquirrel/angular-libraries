@@ -1,3 +1,6 @@
 {
-    "extends": ["@schoolsquirrel/eslint-config-squirrel"]
+    "extends": ["@schoolsquirrel/eslint-config-squirrel"],
+    "rules": {
+        "import/no-unresolved": "off"
+    }
 }
