@@ -24,7 +24,7 @@ jobs:
     - name: Install dependencies
       run: npm install
     - name: Build library
-      run: ng build --prod squirrel-chat-ui
+      run: ng build --prod @schoolsquirrel/chat-ui
     - name: Configure npm
       run: npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
       env:
@@ -35,7 +35,7 @@ jobs:
       env:
         CI: true
         NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN  }}
-      working-directory: dist/@schoolsquirrel/squirrel-chat-ui
+      working-directory: dist/@schoolsquirrel/chat-ui
   release:
     name: Create a GitHub release
     runs-on: ubuntu-latest
@@ -63,6 +63,6 @@ jobs:
         body: |
           ${{ steps.changelog.outputs.changelog }}
 
-          View this library on npmjs.com: [https://www.npmjs.com/package/@schoolsquirrel/squirrel-chat-ui](https://www.npmjs.com/package/@schoolsquirrel/squirrel-chat-ui)
+          View this library on npmjs.com: [https://www.npmjs.com/package/@schoolsquirrel/chat-ui](https://www.npmjs.com/package/@schoolsquirrel/chat-ui)
         draft: true
         prerelease: false
