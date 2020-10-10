@@ -23,6 +23,26 @@
         }
       }
     },
+    "@schoolsquirrel/forms": {
+      "projectType": "library",
+      "root": "projects/schoolsquirrel/forms",
+      "sourceRoot": "projects/schoolsquirrel/forms/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/schoolsquirrel/forms/tsconfig.lib.json",
+            "project": "projects/schoolsquirrel/forms/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/schoolsquirrel/forms/tsconfig.lib.prod.json"
+            }
+          }
+        }
+      }
+    },
     "demo": {
       "projectType": "application",
       "schematics": {

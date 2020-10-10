@@ -1,0 +1,12 @@
+{
+  "name": "@schoolsquirrel/forms",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^10.0.14",
+    "@angular/core": "^10.0.14",
+    "bootstrap": "^4.5.2"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  }
+}

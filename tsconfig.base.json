@@ -19,7 +19,11 @@
       "@schoolsquirrel/chat-ui": [
         "dist/schoolsquirrel/chat-ui/schoolsquirrel-chat-ui",
         "dist/schoolsquirrel/chat-ui"
-      ]
+      ],
+      "@schoolsquirrel/forms": [
+        "dist/schoolsquirrel/forms/schoolsquirrel-forms",
+        "dist/schoolsquirrel/forms"
+      ],
     }
   }
 }
