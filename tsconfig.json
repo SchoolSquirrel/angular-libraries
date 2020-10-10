@@ -1,28 +1,11 @@
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
-    "sourceMap": true,
-    "declaration": false,
-    "downlevelIteration": true,
-    "experimentalDecorators": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "target": "es2015",
-    "lib": [
-      "es2018",
-      "dom"
-    ],
-    "paths": {
-      "@schoolsquirrel/squirrel-chat-ui": [
-        "dist/@schoolsquirrel/squirrel-chat-ui"
-      ]
-    }
-  },
-  "angularCompilerOptions": {
-    "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true
-  }
+    "files": [],
+    "references": [
+        {
+            "path": "./projects/demo/tsconfig.app.json"
+        },
+        {
+            "path": "./projects/schoolsquirrel/chat-ui/tsconfig.lib.json"
+        },
+    ]
 }

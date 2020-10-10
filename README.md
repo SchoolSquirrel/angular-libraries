@@ -1,4 +1,4 @@
-# SquirrelChatUi
+# SchoolSquirrel's Angular Libraries
 ![Available on npm](https://img.shields.io/npm/v/@schoolsquirrel/squirrel-chat-ui)
 [![Release](https://github.com/SchoolSquirrel/SquirrelChatUI/workflows/Release/badge.svg)](https://github.com/SchoolSquirrel/SquirrelChatUI/actions)
 [![Lint](https://github.com/SchoolSquirrel/SquirrelChatUI/workflows/Lint/badge.svg)](https://github.com/SchoolSquirrel/SquirrelChatUI/actions)
