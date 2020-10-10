@@ -1,0 +1,12 @@
+<h1>{{form.name}}</h1>
+<small *ngIf="form.author?.name">Created by {{form.author?.name}}</small>
+<small *ngIf="form.date" class="float-right">{{form.date | date}}</small>
+<form class="mt-5">
+    <div class="form-group row" *ngFor="let field of form?.fields || []">
+        <label [for]="field.id" class="col-sm-2 col-form-label">{{ field.name }}</label>
+        <div class="col-sm-10">
+            <input [type]="text" [readonly]="field.readonly ? 'readonly' : null" [placeholder]="field.placeholder || field.name" class="form-control" [id]="field.id" [(ngModel)]="field.value">
+            <small *ngIf="field.description">{{field.description}}</small>
+        </div>
+    </div>
+</form>
