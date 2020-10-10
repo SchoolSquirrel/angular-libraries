@@ -1,5 +1,8 @@
 type FieldBase = {
     name: string;
+    id: string;
+    description?: string;
+    placeholder?: string;
     value?: string;
     required?: boolean;
     answer?: string;

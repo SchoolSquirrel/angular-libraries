@@ -5,5 +5,7 @@ export class Form {
     author: {
         name: string;
     };
+    date?: Date;
+    description?: string;
     fields: Field[];
 }
