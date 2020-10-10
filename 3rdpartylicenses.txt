@@ -65,6 +65,8 @@ SOFTWARE.
 
 @schoolsquirrel/chat-ui
 
+@schoolsquirrel/forms
+
 core-js
 MIT
 Copyright (c) 2014-2020 Denis Pushkarev
