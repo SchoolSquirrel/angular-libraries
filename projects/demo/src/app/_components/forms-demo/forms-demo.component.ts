@@ -11,13 +11,29 @@ export class FormsDemoComponent {
         author: {
             name: "Max Mustermann",
         },
-        fields: [{
-            type: "text",
-            name: "Name",
-            placeholder: "Firstname Lastname",
-            description: "Insert your name",
-            id: "name",
-        }],
+        fields: [
+            {
+                type: "text",
+                name: "Name",
+                placeholder: "Firstname Lastname",
+                description: "Insert your name.",
+                id: "name",
+                required: true,
+            },
+            {
+                type: "text",
+                name: "Birthdate",
+                id: "birthdate",
+                required: true,
+            },
+            {
+                type: "textarea",
+                name: "My CV",
+                placeholder: "...",
+                description: "Write something about yourself.",
+                id: "cv",
+            },
+        ],
         name: "Testform",
         date: new Date(2020, 10, 5),
     }

@@ -3,10 +3,13 @@
 <small *ngIf="form.date" class="float-right">{{form.date | date}}</small>
 <form class="mt-5">
     <div class="form-group row" *ngFor="let field of form?.fields || []">
-        <label [for]="field.id" class="col-sm-2 col-form-label">{{ field.name }}</label>
+        <label [for]="field.id" class="col-sm-2 col-form-label">{{ field.name }}
+            <span class="text-danger" *ngIf="field.required">*</span>
+        </label>
         <div class="col-sm-10">
             <input [type]="text" [readonly]="field.readonly ? 'readonly' : null" [placeholder]="field.placeholder || field.name" class="form-control" [id]="field.id" [(ngModel)]="field.value">
             <small *ngIf="field.description">{{field.description}}</small>
         </div>
     </div>
 </form>
+<small class="text-muted">Please note: The fields marked with <span class="text-danger">*</span> are mandatory and must be filled in. </small>
