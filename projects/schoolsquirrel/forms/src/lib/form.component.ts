@@ -70,6 +70,10 @@ export class FormComponent {
         return field.type == "select";
     }
 
+    public supportsPlaceholder(field: Field): boolean {
+        return this.isInputTag(field) || this.isTextareaTag(field);
+    }
+
     public onSubmit(): void {
         this.submitted = true;
         if (this.f.invalid) {

@@ -49,7 +49,7 @@
                     <input class="form-control" [id]="field.id + '_description'" [(ngModel)]="field.description" [ngModelOptions]="{standalone: true}">
                 </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row" *ngIf="supportsPlaceholder(field)">
                 <label [for]="field.id + '_placeholder'" class="col-sm-2 col-form-label">Placeholder:</label>
                 <div class="col-sm-10">
                     <input class="form-control" [id]="field.id + '_placeholder'" [(ngModel)]="field.placeholder" [ngModelOptions]="{standalone: true}">
