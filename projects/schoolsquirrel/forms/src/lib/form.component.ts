@@ -74,6 +74,13 @@ export class FormComponent {
         return this.isInputTag(field) || this.isTextareaTag(field);
     }
 
+    public removeField(field: Field): void {
+        // eslint-disable-next-line
+        if (confirm("Do you really want to remove this field")) {
+            this.form.fields = this.form.fields.filter((f) => f.id !== field.id);
+        }
+    }
+
     public onSubmit(): void {
         this.submitted = true;
         if (this.f.invalid) {
