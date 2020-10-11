@@ -65,6 +65,8 @@ SOFTWARE.
 
 @schoolsquirrel/chat-ui
 
+@schoolsquirrel/filemanager
+
 @schoolsquirrel/forms
 
 core-js
