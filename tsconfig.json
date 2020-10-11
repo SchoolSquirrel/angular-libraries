@@ -10,5 +10,8 @@
         {
             "path": "./projects/schoolsquirrel/forms/tsconfig.lib.json"
         },
+        {
+            "path": "./projects/schoolsquirrel/filemanager/tsconfig.lib.json"
+        },
     ]
 }

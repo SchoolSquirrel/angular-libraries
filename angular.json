@@ -43,6 +43,26 @@
         }
       }
     },
+    "@schoolsquirrel/filemanager": {
+      "projectType": "library",
+      "root": "projects/schoolsquirrel/filemanager",
+      "sourceRoot": "projects/schoolsquirrel/filemanager/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/schoolsquirrel/filemanager/tsconfig.lib.json",
+            "project": "projects/schoolsquirrel/filemanager/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/schoolsquirrel/filemanager/tsconfig.lib.prod.json"
+            }
+          }
+        }
+      }
+    },
     "demo": {
       "projectType": "application",
       "schematics": {

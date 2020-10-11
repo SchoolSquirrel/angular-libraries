@@ -24,6 +24,10 @@
         "dist/schoolsquirrel/forms/schoolsquirrel-forms",
         "dist/schoolsquirrel/forms"
       ],
+      "@schoolsquirrel/filemanager": [
+        "dist/schoolsquirrel/filemanager/schoolsquirrel-filemanager",
+        "dist/schoolsquirrel/filemanager"
+      ],
     }
   }
 }
