@@ -132,7 +132,7 @@
                     >{{option.name}}</label>
                 </div>
             </ng-container>
-            <small *ngIf="field.description">{{field.description}}</small>
+            <small *ngIf="field.description" class="form-text text-muted">{{field.description}}</small>
             <div class="invalid-feedback d-block" *ngIf="!editMode && f.controls[field.id].errors && (f.controls[field.id].dirty || f.controls[field.id].touched || submitted)">
                 <ng-container *ngIf="f.controls[field.id].errors.required">This field is required!</ng-container>
                 <ng-container *ngIf="f.controls[field.id].errors.min">This field can't be smaller than {{field.min}}!</ng-container>
