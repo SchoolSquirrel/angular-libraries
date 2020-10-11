@@ -83,7 +83,7 @@ export class FormsDemoComponent {
             {
                 type: "check",
                 id: "terms",
-                name: "",
+                name: "Terms & Conditions",
                 requiredTrue: true,
                 options: [
                     {
