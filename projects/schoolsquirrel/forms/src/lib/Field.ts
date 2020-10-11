@@ -26,6 +26,9 @@ export type Field =
         max?: number;
     } |
     FieldBase & {
+        type: "date";
+    } |
+    FieldBase & {
         type: "textarea";
         maxlength?: number;
     } |
