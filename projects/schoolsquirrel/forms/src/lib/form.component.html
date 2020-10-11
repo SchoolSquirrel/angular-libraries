@@ -150,5 +150,21 @@
     </div>
     <button *ngIf="!editMode" class="float-right btn btn-outline-primary" type="submit">Submit</button>
     <button *ngIf="editMode" class="float-right btn btn-outline-primary" (click)="saveChanges()">Save changes</button>
+    <div class="dropup" *ngIf="editMode">
+        <button class="btn btn-outline-primary dropdown-toggle" type="button" (click)="dropdownOpen = !dropdownOpen">
+            Add field
+        </button>
+        <div class="dropdown-menu" [class.show]="dropdownOpen" aria-labelledby="dropdownMenuButton">
+            <h6 class="dropdown-header">Input fields</h6>
+            <button class="dropdown-item" (click)="addField('text')">Text</button>
+            <button class="dropdown-item" (click)="addField('textarea')">Textarea</button>
+            <button class="dropdown-item" (click)="addField('number')">Number</button>
+            <button class="dropdown-item" (click)="addField('date')">Date</button>
+            <h6 class="dropdown-header">Option fields</h6>
+            <button class="dropdown-item" (click)="addField('select')">Select</button>
+            <button class="dropdown-item" (click)="addField('check')">Checkbox(es)</button>
+            <button class="dropdown-item" (click)="addField('radio')">Radiobutton(s)</button>
+        </div>
+    </div>
 </form>
 <small class="text-muted">Please note: The fields marked with <span class="text-danger">*</span> are mandatory and must be filled in.</small>

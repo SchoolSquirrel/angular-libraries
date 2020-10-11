@@ -22,6 +22,7 @@ export class FormComponent {
     @Output() public formChanged: EventEmitter<Form> = new EventEmitter<Form>();
     public f: FormGroup;
     public submitted = false;
+    public dropdownOpen = false;
 
     public ngOnInit(): void {
         const fields: { [key: string]: AbstractControl; } = {};
@@ -72,6 +73,13 @@ export class FormComponent {
 
     public supportsPlaceholder(field: Field): boolean {
         return this.isInputTag(field) || this.isTextareaTag(field);
+    }
+
+    public addField(type: string): void {
+        this.dropdownOpen = false;
+        this.form.fields.push({
+            type,
+        } as Field);
     }
 
     public duplicateField(field: Field): void {
