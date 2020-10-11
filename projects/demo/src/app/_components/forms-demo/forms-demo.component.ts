@@ -96,4 +96,11 @@ export class FormsDemoComponent {
         name: "Testform",
         date: new Date(2020, 10, 5),
     }
+
+    public onSubmit(form: Form): void {
+        // eslint-disable-next-line no-console
+        console.log(form);
+        // eslint-disable-next-line no-alert
+        alert(`The form was submitted successfully.\nYour answers:\n\n${form.fields.map((f) => `${f.name}: ${f.value}`).join("\n")}`);
+    }
 }

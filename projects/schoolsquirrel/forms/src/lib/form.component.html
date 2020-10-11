@@ -1,7 +1,7 @@
 <h1>{{form.name}}</h1>
 <small *ngIf="form.author?.name">Created by {{form.author?.name}}</small>
 <small *ngIf="form.date" class="float-right">{{form.date | date}}</small>
-<form class="mt-5" [formGroup]="f">
+<form class="my-5" [formGroup]="f" (ngSubmit)="onSubmit()">
     <div class="form-group row" *ngFor="let field of form?.fields || []">
         <label [for]="field.id" class="col-sm-2 col-form-label">{{ field.name }}
             <span class="text-danger" *ngIf="field.required || field.requiredTrue">*</span>
@@ -11,7 +11,7 @@
                 *ngIf="isInputTag(field)"
                 [type]="field.type"
                 [class.is-valid]="f.controls[field.id].valid"
-                [class.is-invalid]="f.controls[field.id].invalid && (f.controls[field.id].dirty || f.controls[field.id].touched)"
+                [class.is-invalid]="f.controls[field.id].invalid && (f.controls[field.id].dirty || f.controls[field.id].touched || submitted)"
                 [readonly]="field.readonly ? 'readonly' : null"
                 [minlength]="field.minlength ? field.minlength : null"
                 [maxlength]="field.maxlength ? field.maxlength : null"
@@ -25,7 +25,7 @@
             <textarea
                 *ngIf="isTextareaTag(field)"
                 [class.is-valid]="f.controls[field.id].valid"
-                [class.is-invalid]="f.controls[field.id].invalid && (f.controls[field.id].dirty || f.controls[field.id].touched)"
+                [class.is-invalid]="f.controls[field.id].invalid && (f.controls[field.id].dirty || f.controls[field.id].touched || submitted)"
                 [readonly]="field.readonly ? 'readonly' : null"
                 [minlength]="field.minlength ? field.minlength : null"
                 [maxlength]="field.maxlength ? field.maxlength : null"
@@ -39,7 +39,7 @@
                     <input
                         type="checkbox"
                         [class.is-valid]="f.controls[field.id].valid"
-                        [class.is-invalid]="f.controls[field.id].invalid && (f.controls[field.id].dirty || f.controls[field.id].touched)"
+                        [class.is-invalid]="f.controls[field.id].invalid && (f.controls[field.id].dirty || f.controls[field.id].touched || submitted)"
                         class="custom-control-input"
                         [id]="option.value"
                         [value]="option.value"
@@ -56,7 +56,7 @@
                     <input
                         type="radio"
                         [class.is-valid]="f.controls[field.id].valid"
-                        [class.is-invalid]="f.controls[field.id].invalid && (f.controls[field.id].dirty || f.controls[field.id].touched)"
+                        [class.is-invalid]="f.controls[field.id].invalid && (f.controls[field.id].dirty || f.controls[field.id].touched || submitted)"
                         class="custom-control-input"
                         [id]="option.value"
                         [value]="option.value"
@@ -71,5 +71,6 @@
             <small *ngIf="field.description">{{field.description}}</small>
         </div>
     </div>
+    <button class="float-right btn btn-outline-primary" type="submit">Submit</button>
 </form>
-<small class="text-muted">Please note: The fields marked with <span class="text-danger">*</span> are mandatory and must be filled in. </small>
+<small class="text-muted">Please note: The fields marked with <span class="text-danger">*</span> are mandatory and must be filled in.</small>

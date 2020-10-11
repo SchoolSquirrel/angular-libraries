@@ -1,4 +1,6 @@
-import { Component, Input } from "@angular/core";
+import {
+    Component, EventEmitter, Input, Output,
+} from "@angular/core";
 import {
     AbstractControl, FormControl, FormGroup, Validators,
 } from "@angular/forms";
@@ -14,7 +16,9 @@ import { Form } from "./Form";
 })
 export class FormComponent {
     @Input() public form: Form = {} as Form;
+    @Output() public formSubmitted: EventEmitter<Form> = new EventEmitter<Form>();
     public f: FormGroup;
+    public submitted = false;
 
     public ngOnInit(): void {
         const fields: { [key: string]: AbstractControl; } = {};
@@ -57,5 +61,16 @@ export class FormComponent {
 
     public isRadio(field: Field): boolean {
         return field.type == "radio";
+    }
+
+    public onSubmit(): void {
+        this.submitted = true;
+        if (this.f.invalid) {
+            return;
+        }
+        for (const field of this.form.fields) {
+            field.value = this.f.controls[field.id].value;
+        }
+        this.formSubmitted.emit(this.form);
     }
 }
