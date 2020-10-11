@@ -113,6 +113,9 @@ export class FormComponent {
         if (!this.editMode) {
             return;
         }
+        for (const field of this.form.fields) {
+            field.id = field.name.toLowerCase().replace(/[\W_ ]+/g, "-").replace(/-$/, "");
+        }
         this.formChanged.emit(this.form);
     }
 }
