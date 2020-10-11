@@ -19,8 +19,23 @@ export class FormComponent {
     public ngOnInit(): void {
         const fields: { [key: string]: AbstractControl; } = {};
         for (const field of this.form.fields) {
-            fields[field.id] = new FormControl(field.value,
-                field.required ? [Validators.required] : []);
+            const validators = [];
+            if (field.required) {
+                validators.push(Validators.required);
+            }
+            if ((field as any).min) {
+                validators.push(Validators.min((field as any).min));
+            }
+            if ((field as any).max) {
+                validators.push(Validators.max((field as any).max));
+            }
+            if ((field as any).minLength) {
+                validators.push(Validators.minLength((field as any).minLength));
+            }
+            if ((field as any).maxLength) {
+                validators.push(Validators.maxLength((field as any).maxLength));
+            }
+            fields[field.id] = new FormControl(field.value, validators);
         }
         this.f = new FormGroup(fields);
     }

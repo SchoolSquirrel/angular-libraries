@@ -19,7 +19,8 @@ type Options = Option[];
 export type Field =
     FieldBase & {
         type: "text";
-        maxlength?: number;
+        maxLength?: number;
+        minLength?: number;
     } |
     FieldBase & {
         type: "number";
@@ -31,7 +32,8 @@ export type Field =
     } |
     FieldBase & {
         type: "textarea";
-        maxlength?: number;
+        maxLength?: number;
+        minLength?: number;
     } |
     FieldBase & {
         type: "select";

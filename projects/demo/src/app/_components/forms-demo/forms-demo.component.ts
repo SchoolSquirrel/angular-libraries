@@ -19,11 +19,22 @@ export class FormsDemoComponent {
                 description: "Insert your name.",
                 id: "name",
                 required: true,
+                minLength: 5,
+                maxLength: 50,
             },
             {
                 type: "text",
                 name: "Birthdate",
                 id: "birthdate",
+                required: true,
+            },
+            {
+                type: "number",
+                name: "Age",
+                id: "age",
+                description: "How old are you?",
+                min: 18,
+                max: 120,
                 required: true,
             },
             {
