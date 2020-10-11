@@ -13,9 +13,11 @@ import { Form } from "./Form";
     host: {
         class: "d-block",
     },
+    styleUrls: ["./form.component.scss"],
 })
 export class FormComponent {
     @Input() public form: Form = {} as Form;
+    @Input() public editMode = false;
     @Output() public formSubmitted: EventEmitter<Form> = new EventEmitter<Form>();
     public f: FormGroup;
     public submitted = false;

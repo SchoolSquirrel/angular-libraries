@@ -7,6 +7,7 @@ import { Form } from "../../../../../schoolsquirrel/forms/src/public-api";
     styleUrls: ["./forms-demo.component.scss"],
 })
 export class FormsDemoComponent {
+    public editMode = false;
     public form: Form = {
         author: {
             name: "Max Mustermann",
