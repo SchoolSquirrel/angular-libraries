@@ -74,10 +74,23 @@ export class FormComponent {
         return this.isInputTag(field) || this.isTextareaTag(field);
     }
 
+    public moveField(field: Field, delta: number): void {
+        const index = this.form.fields.indexOf(field);
+        const newIndex = index + delta;
+        if (newIndex < 0 || newIndex == this.form.fields.length) return;
+        const indexes = [index, newIndex].sort();
+        this.form.fields.splice(
+            indexes[0],
+            2,
+            this.form.fields[indexes[1]],
+            this.form.fields[indexes[0]],
+        );
+    }
+
     public removeField(field: Field): void {
         // eslint-disable-next-line
         if (confirm("Do you really want to remove this field")) {
-            this.form.fields = this.form.fields.filter((f) => f.id !== field.id);
+            this.form.fields.splice(this.form.fields.indexOf(field), 1);
         }
     }
 
