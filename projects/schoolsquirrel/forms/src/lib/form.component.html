@@ -7,7 +7,8 @@
             <span class="text-danger" *ngIf="field.required">*</span>
         </label>
         <div class="col-sm-10">
-            <input [type]="text" [readonly]="field.readonly ? 'readonly' : null" [placeholder]="field.placeholder || field.name" class="form-control" [id]="field.id" [(ngModel)]="field.value">
+            <input *ngIf="isInputTag(field)" [type]="field.type" [readonly]="field.readonly ? 'readonly' : null" [placeholder]="field.placeholder || field.name" class="form-control" [id]="field.id" [(ngModel)]="field.value">
+            <textarea *ngIf="isTextareaTag(field)" [readonly]="field.readonly ? 'readonly' : null" [placeholder]="field.placeholder || field.name" class="form-control" [id]="field.id" [(ngModel)]="field.value"></textarea>
             <small *ngIf="field.description">{{field.description}}</small>
         </div>
     </div>

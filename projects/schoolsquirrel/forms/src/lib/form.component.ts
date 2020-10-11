@@ -1,4 +1,5 @@
 import { Component, Input } from "@angular/core";
+import { Field } from "./Field";
 import { Form } from "./Form";
 
 @Component({
@@ -10,4 +11,12 @@ import { Form } from "./Form";
 })
 export class FormComponent {
     @Input() public form: Form = {} as Form;
+
+    public isInputTag(field: Field): boolean {
+        return ["number", "text", "date"].includes(field.type);
+    }
+
+    public isTextareaTag(field: Field): boolean {
+        return field.type == "textarea";
+    }
 }
