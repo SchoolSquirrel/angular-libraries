@@ -8,7 +8,7 @@ import { Form } from "../../../../../schoolsquirrel/forms/src/public-api";
 })
 export class FormsDemoComponent {
     public editMode = false;
-    public form: Form = {
+    public form: Form = JSON.parse(localStorage.getItem("form") || "null") || {
         author: {
             name: "Max Mustermann",
         },
@@ -97,6 +97,18 @@ export class FormsDemoComponent {
         ],
         name: "Testform",
         date: new Date(2020, 10, 5),
+    }
+
+    public resetFormToDefaultExample(): void {
+        localStorage.removeItem("form");
+        // eslint-disable-next-line no-restricted-globals
+        location.reload();
+    }
+
+    public onFormChanged(form: Form): void {
+        localStorage.setItem("form", JSON.stringify(form));
+        // eslint-disable-next-line no-restricted-globals
+        location.reload();
     }
 
     public onSubmit(form: Form): void {

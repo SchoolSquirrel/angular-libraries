@@ -1,9 +1,10 @@
 <div class="alert alert-primary">
-    <div class="custom-control custom-switch">
+    <a routerLink="" class="float-right" (click)="resetFormToDefaultExample()">Reset to default example</a>
+    <div class="custom-control custom-switch" style="width: 50%;">
         <input type="checkbox" class="custom-control-input" name="editMode" [(ngModel)]="editMode" id="editMode">
         <label class="custom-control-label" for="editMode">Edit mode</label>
     </div>
 </div>
 <main class="p-5">
-    <schoolsquirrel-form [form]="form" [editMode]="editMode" (formSubmitted)="onSubmit($event)"></schoolsquirrel-form>
+    <schoolsquirrel-form [form]="form" [editMode]="editMode" (formSubmitted)="onSubmit($event)" (formChanged)="onFormChanged($event)"></schoolsquirrel-form>
 </main>

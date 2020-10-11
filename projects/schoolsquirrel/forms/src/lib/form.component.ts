@@ -19,6 +19,7 @@ export class FormComponent {
     @Input() public form: Form = {} as Form;
     @Input() public editMode = false;
     @Output() public formSubmitted: EventEmitter<Form> = new EventEmitter<Form>();
+    @Output() public formChanged: EventEmitter<Form> = new EventEmitter<Form>();
     public f: FormGroup;
     public submitted = false;
 
@@ -78,5 +79,12 @@ export class FormComponent {
             field.value = this.f.controls[field.id].value;
         }
         this.formSubmitted.emit(this.form);
+    }
+
+    public saveChanges(): void {
+        if (!this.editMode) {
+            return;
+        }
+        this.formChanged.emit(this.form);
     }
 }

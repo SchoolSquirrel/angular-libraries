@@ -145,5 +145,6 @@
 
     </div>
     <button *ngIf="!editMode" class="float-right btn btn-outline-primary" type="submit">Submit</button>
+    <button *ngIf="editMode" class="float-right btn btn-outline-primary" (click)="saveChanges()">Save changes</button>
 </form>
 <small class="text-muted">Please note: The fields marked with <span class="text-danger">*</span> are mandatory and must be filled in.</small>
