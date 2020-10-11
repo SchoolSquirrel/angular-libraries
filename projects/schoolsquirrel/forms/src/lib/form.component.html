@@ -34,6 +34,40 @@
                 [id]="field.id"
                 [formControlName]="field.id"
             ></textarea>
+            <ng-container *ngIf="isCheckbox(field)">
+                <div class="custom-control custom-checkbox"  *ngFor="let option of field.options || []">
+                    <input
+                        type="checkbox"
+                        [class.is-valid]="f.controls[field.id].valid"
+                        [class.is-invalid]="f.controls[field.id].invalid && (f.controls[field.id].dirty || f.controls[field.id].touched)"
+                        class="custom-control-input"
+                        [id]="option.value"
+                        [value]="option.value"
+                        [formControlName]="field.id"
+                    >
+                    <label
+                        class="custom-control-label"
+                        [for]="option.value"
+                    >{{option.name}}</label>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="isRadio(field)">
+                <div class="custom-control custom-radio"  *ngFor="let option of field.options || []">
+                    <input
+                        type="radio"
+                        [class.is-valid]="f.controls[field.id].valid"
+                        [class.is-invalid]="f.controls[field.id].invalid && (f.controls[field.id].dirty || f.controls[field.id].touched)"
+                        class="custom-control-input"
+                        [id]="option.value"
+                        [value]="option.value"
+                        [formControlName]="field.id"
+                    >
+                    <label
+                        class="custom-control-label"
+                        [for]="option.value"
+                    >{{option.name}}</label>
+                </div>
+            </ng-container>
             <small *ngIf="field.description">{{field.description}}</small>
         </div>
     </div>

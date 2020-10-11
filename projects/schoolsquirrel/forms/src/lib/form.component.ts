@@ -35,6 +35,9 @@ export class FormComponent {
             if ((field as any).maxLength) {
                 validators.push(Validators.maxLength((field as any).maxLength));
             }
+            if ((field as any).requiredTrue) {
+                validators.push(Validators.requiredTrue);
+            }
             fields[field.id] = new FormControl(field.value, validators);
         }
         this.f = new FormGroup(fields);
@@ -46,5 +49,13 @@ export class FormComponent {
 
     public isTextareaTag(field: Field): boolean {
         return field.type == "textarea";
+    }
+
+    public isCheckbox(field: Field): boolean {
+        return field.type == "check";
+    }
+
+    public isRadio(field: Field): boolean {
+        return field.type == "radio";
     }
 }

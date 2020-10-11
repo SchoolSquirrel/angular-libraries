@@ -53,6 +53,45 @@ export class FormsDemoComponent {
                 id: "date",
                 readonly: true,
             },
+            {
+                type: "check",
+                id: "options",
+                name: "Options",
+                options: [
+                    {
+                        name: "I want my application to be proccesed soon.",
+                        value: "soon",
+                    },
+                    {
+                        name: "I want to be employed starting next month.",
+                        value: "nextMonth",
+                    },
+                ],
+            },
+            {
+                type: "radio",
+                id: "free",
+                name: "Free weekday",
+                options: [
+                    { name: "Monday", value: "Monday" },
+                    { name: "Tuesday", value: "Tuesday" },
+                    { name: "Wednesday", value: "Wednesday" },
+                    { name: "Thursday", value: "Thursday" },
+                    { name: "Friday", value: "Friday" },
+                ],
+            },
+            {
+                type: "check",
+                id: "terms",
+                name: "",
+                requiredTrue: true,
+                options: [
+                    {
+                        name: "I agree to the terms and conditions",
+                        value: "terms",
+                    },
+                ],
+            },
         ],
         name: "Testform",
         date: new Date(2020, 10, 5),

@@ -42,6 +42,7 @@ export type Field =
     FieldBase & {
         type: "check";
         options: Options;
+        requiredTrue?: boolean;
     } |
     FieldBase & {
         type: "radio";
