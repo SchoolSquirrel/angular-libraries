@@ -40,6 +40,7 @@ export class FormsDemoComponent {
                 placeholder: "date",
                 description: "When you send the application.",
                 id: "date",
+                readonly: true,
             },
         ],
         name: "Testform",

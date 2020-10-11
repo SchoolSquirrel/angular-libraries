@@ -5,6 +5,7 @@ type FieldBase = {
     placeholder?: string;
     value?: string;
     required?: boolean;
+    readonly?: boolean;
     answer?: string;
 }
 
