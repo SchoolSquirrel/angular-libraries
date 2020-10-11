@@ -21,6 +21,7 @@
                     <input type="checkbox" class="custom-control-input" [id]="field.id + '_readonly'" [(ngModel)]="field.readonly" [ngModelOptions]="{standalone: true}">
                     <label class="custom-control-label" [for]="field.id + '_readonly'">Readonly</label>
                 </div>
+                <button class="btn p-1 text-primary" (click)="duplicateField(field)"><i class="fas fa-copy"></i></button>
                 <button class="btn p-1 text-secondary" [disabled]="form.fields.indexOf(field) == 0 ? 'disabled' : null" (click)="moveField(field, -1)"><i class="fas fa-arrow-up"></i></button>
                 <button class="btn p-1 text-secondary" [disabled]="form.fields.indexOf(field) == (form.fields.length - 1) ? 'disabled' : null" (click)="moveField(field, 1)"><i class="fas fa-arrow-down"></i></button>
                 <button class="btn p-1 text-danger" (click)="removeField(field)"><i class="fas fa-trash"></i></button>

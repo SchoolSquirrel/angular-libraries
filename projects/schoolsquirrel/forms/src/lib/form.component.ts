@@ -74,6 +74,10 @@ export class FormComponent {
         return this.isInputTag(field) || this.isTextareaTag(field);
     }
 
+    public duplicateField(field: Field): void {
+        this.form.fields.splice(this.form.fields.indexOf(field), 0, field);
+    }
+
     public moveField(field: Field, delta: number): void {
         const index = this.form.fields.indexOf(field);
         const newIndex = index + delta;
