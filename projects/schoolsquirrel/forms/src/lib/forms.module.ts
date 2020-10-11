@@ -1,4 +1,5 @@
 import { NgModule } from "@angular/core";
+import { ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { FormComponent } from "./form.component";
 
@@ -6,6 +7,7 @@ import { FormComponent } from "./form.component";
     declarations: [FormComponent],
     imports: [
         BrowserModule,
+        ReactiveFormsModule,
     ],
     exports: [FormComponent],
 })

@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { ChatUiModule } from "@schoolsquirrel/chat-ui";
 import { RouterModule } from "@angular/router";
 // import { SchoolSquirrelFormsModule } from "@schoolsquirrel/forms";
+import { ReactiveFormsModule } from "@angular/forms";
 import { SchoolSquirrelFormsModule } from "../../../schoolsquirrel/forms/src/public-api";
 import { AppComponent } from "./app.component";
 import { ChatUiDemoComponent } from "./_components/chat-ui-demo/chat-ui-demo.component";
@@ -19,6 +20,7 @@ import { IndexComponent } from "./_components/index/index.component";
     imports: [
         BrowserModule,
         ChatUiModule,
+        ReactiveFormsModule,
         SchoolSquirrelFormsModule,
         RouterModule.forRoot([
             { path: "chat-ui", component: ChatUiDemoComponent },
