@@ -34,6 +34,19 @@
                 [id]="field.id"
                 [formControlName]="field.id"
             ></textarea>
+            <select
+                class="custom-select"
+                *ngIf="isSelectbox(field)"
+                [class.is-valid]="f.controls[field.id].valid"
+                [class.is-invalid]="f.controls[field.id].invalid && (f.controls[field.id].dirty || f.controls[field.id].touched || submitted)"
+                [formControlName]="field.id"
+            >
+                <option
+                    *ngFor="let option of field.options || []"
+                    [value]="option.value"
+                    >{{option.name}}
+                </option>
+            </select>
             <ng-container *ngIf="isCheckbox(field)">
                 <div class="custom-control custom-checkbox"  *ngFor="let option of field.options || []">
                     <input

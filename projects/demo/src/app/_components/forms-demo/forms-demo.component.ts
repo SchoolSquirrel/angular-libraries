@@ -54,18 +54,22 @@ export class FormsDemoComponent {
                 readonly: true,
             },
             {
+                type: "select",
+                id: "rgb",
+                name: "RGB",
+                options: [
+                    { name: "I like RGB.", value: "like" },
+                    { name: "I hate RGB", value: "hate" },
+                    { name: "What is RGB?", value: "what" },
+                ],
+            },
+            {
                 type: "check",
                 id: "options",
                 name: "Options",
                 options: [
-                    {
-                        name: "I want my application to be proccesed soon.",
-                        value: "soon",
-                    },
-                    {
-                        name: "I want to be employed starting next month.",
-                        value: "nextMonth",
-                    },
+                    { name: "I want my application to be proccesed soon.", value: "soon" },
+                    { name: "I want to be employed starting next month.", value: "nextMonth" },
                 ],
             },
             {
@@ -86,10 +90,7 @@ export class FormsDemoComponent {
                 name: "Terms & Conditions",
                 requiredTrue: true,
                 options: [
-                    {
-                        name: "I agree to the terms and conditions",
-                        value: "terms",
-                    },
+                    { name: "I agree to the terms and conditions", value: "terms" },
                 ],
             },
         ],

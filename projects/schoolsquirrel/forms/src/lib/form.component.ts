@@ -63,6 +63,10 @@ export class FormComponent {
         return field.type == "radio";
     }
 
+    public isSelectbox(field: Field): boolean {
+        return field.type == "select";
+    }
+
     public onSubmit(): void {
         this.submitted = true;
         if (this.f.invalid) {
