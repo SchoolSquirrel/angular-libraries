@@ -8,6 +8,7 @@
     "@fortawesome/fontawesome-free": "^5.14.0"
   },
   "dependencies": {
+    "css-file-icons": "^0.1.0",
     "tslib": "^2.0.0"
   }
 }

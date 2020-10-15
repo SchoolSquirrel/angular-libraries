@@ -1,1 +1,24 @@
-<p>filemanager works!</p>
+<table class="table table-striped table-hover" *ngIf="items && items.length">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Name</th>
+            <th colspan="2">Modified</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of items" class="pointer">
+            <td></td>
+            <td>
+                <div [class]="'d-inline-block fi fi-round-md fi-' + (item.name | fileExtension)" *ngIf="!item.isFolder">
+                    <div class="fi-content">{{item.name | fileExtension}}</div>
+                </div>
+                <span>{{item.name}}</span>
+            </td>
+            <td>{{item.modified | date}}</td>
+            <td>{{item.modifiedBy?.name}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<span *ngIf="!items || items.length == 0">No files or folders found!</span>

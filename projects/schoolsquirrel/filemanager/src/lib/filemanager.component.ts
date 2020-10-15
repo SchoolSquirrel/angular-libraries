@@ -1,6 +1,8 @@
 import {
-    Component,
+    Component, Input,
 } from "@angular/core";
+import { File } from "./File";
+import { Folder } from "./Folder";
 
 @Component({
     selector: "filemanager",
@@ -11,4 +13,5 @@ import {
     styleUrls: ["./filemanager.component.scss"],
 })
 export class FileManagerComponent {
+    @Input() public items: (File | Folder)[];
 }

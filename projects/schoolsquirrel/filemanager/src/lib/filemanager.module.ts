@@ -1,9 +1,10 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { FileManagerComponent } from "./filemanager.component";
+import { FileExtensionPipe } from "./file-extension.pipe";
 
 @NgModule({
-    declarations: [FileManagerComponent],
+    declarations: [FileManagerComponent, FileExtensionPipe],
     imports: [
         BrowserModule,
     ],
