@@ -1,5 +1,5 @@
 import {
-    Component, Input,
+    Component, EventEmitter, Input, Output,
 } from "@angular/core";
 import { File } from "./File";
 
@@ -14,6 +14,7 @@ import { File } from "./File";
 export class FileManagerComponent {
     @Input() public files: File[];
     @Input() public rootFolderName = "Files";
+    @Output() public openFile: EventEmitter<File> = new EventEmitter<File>();
     public currentFiles: File[] = [];
     public currentPath: string[] = [];
 
@@ -37,8 +38,7 @@ export class FileManagerComponent {
             this.currentPath.push(file._name);
             this.updateCurrentFiles();
         } else {
-            // eslint-disable-next-line no-alert
-            alert(file._name);
+            this.openFile.emit(file);
         }
     }
 

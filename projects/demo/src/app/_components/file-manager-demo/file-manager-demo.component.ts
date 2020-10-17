@@ -28,4 +28,9 @@ export class FileManagerDemoComponent {
             path: "Logo.psd",
         },
     ];
+
+    public openFile(file: File): void {
+        // eslint-disable-next-line no-alert
+        alert(`${file._name} was opened!`);
+    }
 }
