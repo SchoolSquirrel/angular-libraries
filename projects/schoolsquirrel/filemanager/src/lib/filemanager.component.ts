@@ -17,21 +17,7 @@ export class FileManagerComponent {
     public currentPath: string[] = [];
 
     public ngOnInit(): void {
-        for (const file of this.files) {
-            if (this.currentPath.length > 0) {
-                //
-            } else {
-                const parts = file.path.split("/");
-                const topLevelName = parts.shift();
-                if (this.currentFiles.findIndex((f) => f._name == topLevelName) === -1) {
-                    this.currentFiles.push({
-                        _name: topLevelName,
-                        path: file.path,
-                        isFolder: file.isFolder || parts.length > 0,
-                    });
-                }
-            }
-        }
+        this.updateCurrentFiles();
     }
 
     public selectFile(event: Event, file: File): void {
@@ -43,5 +29,36 @@ export class FileManagerComponent {
         event.preventDefault();
         event.stopPropagation();
         file._selected = !file._selected;
+    }
+
+    public open(file: File): void {
+        if (file.isFolder) {
+            this.currentPath.push(file._name);
+            this.updateCurrentFiles();
+        } else {
+            // eslint-disable-next-line no-alert
+            alert(file._name);
+        }
+    }
+
+    private updateCurrentFiles() {
+        this.currentFiles = [];
+        const currentPath = this.currentPath.join("/");
+        const files = this.currentPath.length > 0
+            ? this.files.filter((f) => f.path.startsWith(currentPath))
+            : this.files;
+        for (const file of files) {
+            const parts = file.path.split("/").slice(this.currentPath.length);
+            if (parts?.length) {
+                const topLevelName = parts.shift();
+                if (this.currentFiles.findIndex((f) => f._name == topLevelName) === -1) {
+                    this.currentFiles.push({
+                        _name: topLevelName,
+                        path: file.path,
+                        isFolder: file.isFolder || parts.length > 0,
+                    });
+                }
+            }
+        }
     }
 }
