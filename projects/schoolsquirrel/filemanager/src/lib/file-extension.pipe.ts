@@ -6,6 +6,6 @@ import { Pipe, PipeTransform } from "@angular/core";
 
 export class FileExtensionPipe implements PipeTransform {
     public transform(value: string): string {
-        return value.split(".")?.pop() || "";
+        return value?.split(".")?.pop() || "";
     }
 }

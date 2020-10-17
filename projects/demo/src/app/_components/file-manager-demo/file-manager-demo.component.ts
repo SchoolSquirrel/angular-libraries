@@ -1,5 +1,4 @@
 import { Component } from "@angular/core";
-import { Folder } from "../../../../../schoolsquirrel/filemanager/src/lib/Folder";
 import { File } from "../../../../../schoolsquirrel/filemanager/src/lib/File";
 
 @Component({
@@ -8,30 +7,25 @@ import { File } from "../../../../../schoolsquirrel/filemanager/src/lib/File";
     styleUrls: ["./file-manager-demo.component.scss"],
 })
 export class FileManagerDemoComponent {
-    public items: (File | Folder)[] = [
+    public files: File[] = [
         {
-            name: "CVs",
-            files: [],
+            path: "CVs",
             isFolder: true,
         },
         {
-            name: "Assignments",
-            files: [],
-            isFolder: true,
+            path: "Pictures/Holidays/Winter/cool.png",
         },
         {
-            name: "Pictures",
-            files: [],
-            isFolder: true,
+            path: "Spreadsheets/Calculations/Prices.xlsx",
         },
         {
-            name: "README.docx",
+            path: "README.docx",
         },
         {
-            name: "Infos.pptx",
+            path: "Infos.pptx",
         },
         {
-            name: "Logo.psd",
+            path: "Logo.psd",
         },
     ];
 }

@@ -2,4 +2,24 @@
 
 .pointer {
     cursor: pointer;
+    .autohide {
+        display: none;
+    }
+    &:hover {
+        .autohide {
+            display: unset;
+        }
+    }
+}
+
+.folder-icon {
+    color: #FFDA68;
+}
+
+table {
+    tr {
+        th.sm, td.sm {
+            width: 4rem;
+        }
+    }
 }
