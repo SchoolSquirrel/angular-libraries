@@ -23,6 +23,7 @@
     "@fortawesome/fontawesome-free": "^5.15.1",
     "@tinymce/tinymce-angular": "^4.2.0",
     "bootstrap": "^4.5.2",
+    "css-file-icons": "^0.1.0",
     "ng-utf8-emojis-to-images": "^1.1.0",
     "rxjs": "~6.6.3",
     "tinymce": "^5.5.1",

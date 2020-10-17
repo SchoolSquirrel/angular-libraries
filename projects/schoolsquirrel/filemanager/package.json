@@ -1,14 +1,14 @@
 {
-  "name": "@schoolsquirrel/filemanager",
-  "version": "0.0.1",
-  "peerDependencies": {
-    "@angular/common": "^10.0.14",
-    "@angular/core": "^10.0.14",
-    "bootstrap": "^4.5.2",
-    "@fortawesome/fontawesome-free": "^5.14.0"
-  },
-  "dependencies": {
-    "css-file-icons": "^0.1.0",
-    "tslib": "^2.0.0"
-  }
+    "name": "@schoolsquirrel/filemanager",
+    "version": "0.0.1",
+    "peerDependencies": {
+        "@angular/common": "^10.0.14",
+        "@angular/core": "^10.0.14",
+        "bootstrap": "^4.5.2",
+        "@fortawesome/fontawesome-free": "^5.14.0",
+        "css-file-icons": "^0.1.0"
+    },
+    "dependencies": {
+        "tslib": "^2.0.0"
+    }
 }
