@@ -33,4 +33,15 @@ export class FileManagerComponent {
             }
         }
     }
+
+    public selectFile(event: Event, file: File): void {
+        if (!(event as any).ctrlKey && (event.target as HTMLElement).nodeName !== "LABEL") {
+            for (const f of this.currentFiles) {
+                f._selected = false;
+            }
+        }
+        event.preventDefault();
+        event.stopPropagation();
+        file._selected = !file._selected;
+    }
 }

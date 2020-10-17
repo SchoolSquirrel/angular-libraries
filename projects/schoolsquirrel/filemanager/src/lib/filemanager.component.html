@@ -8,10 +8,10 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let file of currentFiles" class="pointer">
+        <tr *ngFor="let file of currentFiles" class="pointer" (click)="selectFile($event, file)" [class.table-active]="file._selected">
             <td>
-                <div class="custom-control custom-checkbox autohide">
-                    <input type="checkbox" class="custom-control-input" [id]="file.path">
+                <div class="custom-control custom-checkbox autohide" [class.d-block]="file._selected">
+                    <input type="checkbox" class="custom-control-input" [id]="file.path" [(ngModel)]="file._selected">
                     <label class="custom-control-label pointer" [for]="file.path"></label>
                 </div>
             </td>

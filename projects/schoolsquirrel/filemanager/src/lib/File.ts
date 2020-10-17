@@ -8,4 +8,5 @@ export class File {
     createdBy?: User;
     modifiedBy?: User;
     _name?: string;
+    _selected?: boolean;
 }
