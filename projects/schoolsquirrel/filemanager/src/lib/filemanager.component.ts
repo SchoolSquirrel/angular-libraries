@@ -13,6 +13,7 @@ import { File } from "./File";
 })
 export class FileManagerComponent {
     @Input() public files: File[];
+    @Input() public rootFolderName = "Files";
     public currentFiles: File[] = [];
     public currentPath: string[] = [];
 
@@ -39,6 +40,18 @@ export class FileManagerComponent {
             // eslint-disable-next-line no-alert
             alert(file._name);
         }
+    }
+
+    public goToPathIndex(event: Event, index: number): void {
+        event.preventDefault();
+        event.stopPropagation();
+        if (index === -1) {
+            this.currentPath = [];
+        } else if (index == this.currentPath.length - 1) {
+            return;
+        }
+        this.currentPath = this.currentPath.slice(0, index - 1);
+        this.updateCurrentFiles();
     }
 
     private updateCurrentFiles() {

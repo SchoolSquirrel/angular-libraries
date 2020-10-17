@@ -19,5 +19,8 @@ table {
         th.sm, td.sm {
             width: 4rem;
         }
+        th {
+            border-top: none;
+        }
     }
 }

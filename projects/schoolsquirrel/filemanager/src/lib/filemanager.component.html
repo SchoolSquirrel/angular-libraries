@@ -1,3 +1,14 @@
+<nav class="breadcrumbs">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a [attr.href]="currentPath.length === 0 ? null : ''"  (click)="goToPathIndex($event, -1)">{{rootFolderName}}</a>
+        </li>
+        <li class="breadcrumb-item" *ngFor="let part of currentPath; index as index">
+            <a [attr.href]="index === currentPath.length - 1 ? null : ''" (click)="goToPathIndex($event, index)">{{part}}</a>
+        </li>
+    </ol>
+</nav>
+
 <table class="table table-hover" *ngIf="currentFiles && currentFiles.length">
     <thead>
         <tr>
