@@ -7,7 +7,7 @@ import { File } from "./File";
     selector: "filemanager",
     templateUrl: "./filemanager.component.html",
     host: {
-        class: "d-block",
+        class: "d-block h-100",
     },
     styleUrls: ["./filemanager.component.scss"],
 })

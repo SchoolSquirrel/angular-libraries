@@ -1,52 +1,58 @@
-<nav class="nav actions">
-    <a class="nav-link" href="#">New</a>
-    <a class="nav-link" href="#">Upload</a>
-    <a class="nav-link" href="#">Download</a>
-    <a class="nav-link mr-auto" href="#">Share</a>
-    <a class="nav-link" href="#">View</a>
-</nav>
-
-<nav class="breadcrumbs">
-    <ol class="breadcrumb bg-white">
-        <li class="breadcrumb-item">
-            <a [attr.href]="currentPath.length === 0 ? null : ''" [class]="currentPath.length === 0 ? 'font-weight-bold no-link' : ''" (click)="goToPathIndex($event, -1)">{{rootFolderName}}</a>
-        </li>
-        <li class="breadcrumb-item" *ngFor="let part of currentPath; index as index">
-            <a [attr.href]="index === currentPath.length - 1 ? null : ''" [class]="index === currentPath.length - 1 ? 'font-weight-bold no-link' : ''" (click)="goToPathIndex($event, index)">{{part}}</a>
-        </li>
-    </ol>
-</nav>
-
-<table class="table table-hover" *ngIf="currentFiles && currentFiles.length">
-    <thead>
-        <tr>
-            <th class="sm"></th>
-            <th class="sm"></th>
-            <th>Name</th>
-            <th colspan="2">Modified</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let file of currentFiles" class="pointer" (click)="selectFile($event, file)" (dblclick)="open(file)" [class.table-active]="file._selected">
-            <td>
-                <div class="custom-control custom-checkbox autohide" [class.d-block]="file._selected">
-                    <input type="checkbox" class="custom-control-input" [id]="file.path" [(ngModel)]="file._selected">
-                    <label class="custom-control-label pointer" [for]="file.path"></label>
-                </div>
-            </td>
-            <td>
-                <div [class]="'d-inline-block fi fi-size-xs fi-round-md fi-' + (file._name | fileExtension)" *ngIf="!file.isFolder">
-                    <div class="fi-content">{{file._name | fileExtension}}</div>
-                </div>
-                <i class="folder-icon fas fa-folder fa-2x" *ngIf="file.isFolder"></i>
-            </td>
-            <td>
-                <span>{{file._name}}</span>
-            </td>
-            <td>{{file.modified | date}}</td>
-            <td>{{file.modifiedBy?.name}}</td>
-        </tr>
-    </tbody>
-</table>
-
-<span *ngIf="!currentFiles || currentFiles.length == 0">No files or folders found!</span>
+<div class="h-100 d-flex flex-column">
+    <div>
+        <nav class="nav actions">
+            <a class="nav-link" href="#">New</a>
+            <a class="nav-link" href="#">Upload</a>
+            <a class="nav-link" href="#">Download</a>
+            <a class="nav-link mr-auto" href="#">Share</a>
+            <a class="nav-link" href="#">View</a>
+        </nav>
+    </div>
+    <div>
+        <nav class="breadcrumbs">
+            <ol class="breadcrumb bg-white">
+                <li class="breadcrumb-item">
+                    <a [attr.href]="currentPath.length === 0 ? null : ''" [class]="currentPath.length === 0 ? 'font-weight-bold no-link' : ''" (click)="goToPathIndex($event, -1)">{{rootFolderName}}</a>
+                </li>
+                <li class="breadcrumb-item" *ngFor="let part of currentPath; index as index">
+                    <a [attr.href]="index === currentPath.length - 1 ? null : ''" [class]="index === currentPath.length - 1 ? 'font-weight-bold no-link' : ''" (click)="goToPathIndex($event, index)">{{part}}</a>
+                </li>
+            </ol>
+        </nav>
+    </div>
+    <div class="flex-shrink-1 overflow-auto">
+        <table class="table table-hover" *ngIf="currentFiles && currentFiles.length">
+            <thead>
+                <tr>
+                    <th class="sm"></th>
+                    <th class="sm"></th>
+                    <th>Name</th>
+                    <th colspan="2">Modified</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let file of currentFiles" class="pointer" (click)="selectFile($event, file)" (dblclick)="open(file)" [class.table-active]="file._selected">
+                    <td>
+                        <div class="custom-control custom-checkbox autohide" [class.d-block]="file._selected">
+                            <input type="checkbox" class="custom-control-input" [id]="file.path" [(ngModel)]="file._selected">
+                            <label class="custom-control-label pointer" [for]="file.path"></label>
+                        </div>
+                    </td>
+                    <td>
+                        <div [class]="'d-inline-block fi fi-size-xs fi-round-md fi-' + (file._name | fileExtension)" *ngIf="!file.isFolder">
+                            <div class="fi-content">{{file._name | fileExtension}}</div>
+                        </div>
+                        <i class="folder-icon fas fa-folder fa-2x" *ngIf="file.isFolder"></i>
+                    </td>
+                    <td>
+                        <span>{{file._name}}</span>
+                    </td>
+                    <td>{{file.modified | date}}</td>
+                    <td>{{file.modifiedBy?.name}}</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <span *ngIf="!currentFiles || currentFiles.length == 0">No files or folders found!</span>
+    </div>
+</div>
