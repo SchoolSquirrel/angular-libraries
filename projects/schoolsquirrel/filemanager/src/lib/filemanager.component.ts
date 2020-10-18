@@ -50,7 +50,7 @@ export class FileManagerComponent {
         } else if (index == this.currentPath.length - 1) {
             return;
         }
-        this.currentPath = this.currentPath.slice(0, index - 1);
+        this.currentPath = this.currentPath.slice(0, index + 1);
         this.updateCurrentFiles();
     }
 
