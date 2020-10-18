@@ -1,12 +1,38 @@
 <div class="h-100 d-flex flex-column">
     <div>
-        <nav class="nav actions">
-            <a class="nav-link" href="#">New</a>
-            <a class="nav-link" href="#">Upload</a>
-            <a class="nav-link" href="#">Download</a>
-            <a class="nav-link mr-auto" href="#">Share</a>
-            <a class="nav-link" href="#">View</a>
-        </nav>
+        <ul class="nav">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle pointer" (click)="openDropdown($event, 'new')">New</a>
+                <div class="dropdown-menu ml-4" [class.show]="dropdownOpen == 'new'">
+                    <a class="dropdown-item pointer"><i class="mr-2 folder-icon fas fa-folder"></i>Folder</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item pointer"><div class="mr-2 d-inline-block fi fi-size-xxs fi-round-md fi-docx"><div class="fi-content">docx</div></div>Document</a>
+                    <a class="dropdown-item pointer"><div class="mr-2 d-inline-block fi fi-size-xxs fi-round-md fi-xlsx"><div class="fi-content">xlsx</div></div>Spreadsheet</a>
+                    <a class="dropdown-item pointer"><div class="mr-2 d-inline-block fi fi-size-xxs fi-round-md fi-pptx"><div class="fi-content">pptx</div></div>Presentation</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link pointer">Upload</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link pointer">Download</a>
+            </li>
+            <li class="nav-item mr-auto dropdown">
+                <a class="nav-link dropdown-toggle pointer" (click)="openDropdown($event, 'share')">Share</a>
+                <div class="dropdown-menu" [class.show]="dropdownOpen == 'share'">
+                    <a class="dropdown-item pointer">Internal Link</a>
+                    <a class="dropdown-item pointer">External Link</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle pointer" (click)="openDropdown($event, 'view')">View</a>
+                <div class="dropdown-menu dropdown-menu-right mr-4" [class.show]="dropdownOpen == 'view'">
+                    <a class="dropdown-item pointer"><i class="fas fa-th-list mr-2"></i>List</a>
+                    <a class="dropdown-item pointer"><i class="fas fa-bars mr-2"></i>Small list</a>
+                    <a class="dropdown-item pointer"><i class="fas fa-th mr-2"></i>Tiles</a>
+                </div>
+            </li>
+        </ul>
     </div>
     <div>
         <nav class="breadcrumbs">

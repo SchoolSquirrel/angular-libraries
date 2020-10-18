@@ -17,6 +17,7 @@ export class FileManagerComponent {
     @Output() public openFile: EventEmitter<File> = new EventEmitter<File>();
     public currentFiles: File[] = [];
     public currentPath: string[] = [];
+    public dropdownOpen: string;
 
     public ngOnInit(): void {
         this.updateCurrentFiles();
@@ -52,6 +53,12 @@ export class FileManagerComponent {
         }
         this.currentPath = this.currentPath.slice(0, index + 1);
         this.updateCurrentFiles();
+    }
+
+    public openDropdown(event: Event, type: string): void {
+        this.dropdownOpen = this.dropdownOpen == type ? undefined : type;
+        event.preventDefault();
+        event.stopPropagation();
     }
 
     private updateCurrentFiles() {

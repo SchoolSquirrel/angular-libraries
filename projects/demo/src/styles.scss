@@ -4,6 +4,17 @@
 @import "../../../node_modules/@fortawesome/fontawesome-free/css/all.css";
 @import '../../../node_modules/@ctrl/ngx-emoji-mart/picker';
 @import '../../../node_modules/css-file-icons/build/css-file-icons.css';
+@import "../../../node_modules/css-file-icons/src/scss/mixins";
+@import "../../../node_modules/css-file-icons/src/scss/variables";
+@include fi-size("xxs", $fi_width*0.5, $fi_height*0.5, $fi_arrow*0.5, $fi_font_size*0.5);
+@include fi-color("pptx", #ce4123);
+
+.fi {
+    cursor: default;
+    &:hover {
+        transform: none;
+    }
+}
 .vh-50 {
     height: 50vh;
 }
