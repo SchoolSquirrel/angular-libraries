@@ -1,10 +1,10 @@
 <nav class="breadcrumbs">
-    <ol class="breadcrumb">
+    <ol class="breadcrumb bg-white">
         <li class="breadcrumb-item">
-            <a [attr.href]="currentPath.length === 0 ? null : ''"  (click)="goToPathIndex($event, -1)">{{rootFolderName}}</a>
+            <a [attr.href]="currentPath.length === 0 ? null : ''" [class]="currentPath.length === 0 ? 'font-weight-bold no-link' : ''" (click)="goToPathIndex($event, -1)">{{rootFolderName}}</a>
         </li>
         <li class="breadcrumb-item" *ngFor="let part of currentPath; index as index">
-            <a [attr.href]="index === currentPath.length - 1 ? null : ''" (click)="goToPathIndex($event, index)">{{part}}</a>
+            <a [attr.href]="index === currentPath.length - 1 ? null : ''" [class]="index === currentPath.length - 1 ? 'font-weight-bold no-link' : ''" (click)="goToPathIndex($event, index)">{{part}}</a>
         </li>
     </ol>
 </nav>

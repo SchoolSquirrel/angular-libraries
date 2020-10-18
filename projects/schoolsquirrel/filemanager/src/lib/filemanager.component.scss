@@ -24,3 +24,10 @@ table {
         }
     }
 }
+
+.no-link {
+    color: unset;
+    &:hover {
+        text-decoration: none;
+    }
+}
