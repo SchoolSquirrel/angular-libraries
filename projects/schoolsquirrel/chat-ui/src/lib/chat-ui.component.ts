@@ -33,8 +33,19 @@ export class ChatUiComponent implements OnInit {
     @Input() public subtitle = "";
     @Input() public me: User = undefined;
     @Input() public hideHeader = false;
-    @Input() public i18n: { edit: string; discardDraft: string, edited: string, cite: string } = {
-        edit: "Edit", discardDraft: "Do you really want to discard your draft?", edited: "Bearbeitet", cite: "Zitieren",
+    @Input() public typingUsername: string;
+    @Input() public i18n: {
+        edit: string;
+        discardDraft: string,
+        edited: string,
+        cite: string,
+        isTyping: string
+    } = {
+        edit: "Edit",
+        discardDraft: "Do you really want to discard your draft?",
+        edited: "Bearbeitet",
+        cite: "Zitieren",
+        isTyping: "is typing",
     };
     @Input() public emojiMartOptions: {
         i18n: any, enableSearch: boolean, showPreview: boolean, title: string, emoji: string,

@@ -67,46 +67,51 @@
             </div>
         </div>
     </div>
-    <div class="bg-light p-1 d-flex p-relative cui-footer">
-        <emoji-mart class="cui-emoji-picker" [enableSearch]="emojiMartOptions.enableSearch" [i18n]="emojiMartOptions.i18n" [title]="emojiMartOptions.title" [emoji]="emojiMartOptions.emoji" [showPreview]="emojiMartOptions.showPreview" [class.d-none]="!showEmojiPicker"
-            (emojiSelect)="emojiSelected($event)"></emoji-mart>
-        <div class="cui-attachments cui-card mx-4 bg-white" [class.d-none]="!showAttachmentsCard">
-            <table class="text-center m-4" [style.visibility]="attachmentLoading ? 'hidden' : 'visible'">
-                <tr *ngFor="let attachmentButtonRow of attachmentButtonRows">
-                    <td class="p-2" *ngFor="let attachmentButton of attachmentButtonRow">
-                        <button class="btn text-primary" (click)="attach(attachmentButton)">
-                            <i [class]="'fa-2x '+attachmentButton.icon"></i><br>
-                            {{attachmentButton.name}}
-                        </button>
-                    </td>
-                </tr>
-            </table>
-            <div *ngIf="attachmentLoading" class="text-center position-absolute cui-progress-card w-100">
-                <div class="spinner-border text-primary cui-spinner"></div>
-                <span class="d-block mt-3">{{attachmentLoading}}</span>
-            </div>
+    <div class="cui-footer">
+        <div class="px-4" *ngIf="typingUsername">
+            <div class="loading-ellipsis"><div></div><div></div><div></div><div></div></div> <span class="text-muted"><b>{{typingUsername}}</b> {{i18n.isTyping}}</span>
         </div>
-        <div class="cui-actions cui-actions-left d-flex justify-content-end flex-column">
-            <div>
-                <button class="btn text-dark d-inline-block" (click)="toggleEmojiPicker()"><i class="fas fa-laugh"></i></button>
-                <button class="btn text-dark  d-inline-blockposition-relative" (click)="toggleAttachmentsCard()">
-                    <i class="fas fa-paperclip"></i>
-                    <div class="spinner-border cui-spinner position-absolute text-secondary" *ngIf="attachmentLoading"></div>
-                </button>
-                <button class="btn text-dark d-inline-block"><i class="fas fa-edit"></i></button>
+        <div class="bg-light p-1 d-flex p-relative ">
+            <emoji-mart class="cui-emoji-picker" [enableSearch]="emojiMartOptions.enableSearch" [i18n]="emojiMartOptions.i18n" [title]="emojiMartOptions.title" [emoji]="emojiMartOptions.emoji" [showPreview]="emojiMartOptions.showPreview" [class.d-none]="!showEmojiPicker"
+                (emojiSelect)="emojiSelected($event)"></emoji-mart>
+            <div class="cui-attachments cui-card mx-4 bg-white" [class.d-none]="!showAttachmentsCard">
+                <table class="text-center m-4" [style.visibility]="attachmentLoading ? 'hidden' : 'visible'">
+                    <tr *ngFor="let attachmentButtonRow of attachmentButtonRows">
+                        <td class="p-2" *ngFor="let attachmentButton of attachmentButtonRow">
+                            <button class="btn text-primary" (click)="attach(attachmentButton)">
+                                <i [class]="'fa-2x '+attachmentButton.icon"></i><br>
+                                {{attachmentButton.name}}
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+                <div *ngIf="attachmentLoading" class="text-center position-absolute cui-progress-card w-100">
+                    <div class="spinner-border text-primary cui-spinner"></div>
+                    <span class="d-block mt-3">{{attachmentLoading}}</span>
+                </div>
             </div>
-        </div>
-        <div class="cui-input flex-grow-1">
-            <div *ngIf="citeMessageIdx !== undefined && messages[citeMessageIdx]" class="d-block w-100 bg-light text-muted p-2 pt-1 pb-4 cui-citation" (click)="goToMessage(messages[citeMessageIdx].id)">
-                <button class="btn float-right p-0 cui-close" (click)="citeMessageIdx = undefined"><i class="fas fa-times"></i></button>
-                <span class="cui-user d-block"><b>{{messages[citeMessageIdx].sender.name}}</b></span>
-                <small class="cui-citation-content  d-block overflow-hidden" [innerHTML]="messages[citeMessageIdx].text | utf8EmojisToImages:undefined:18"></small>
-                <small class="float-right ml-4 text-muted">{{messages[citeMessageIdx].date | date:'shortTime'}}</small>
+            <div class="cui-actions cui-actions-left d-flex justify-content-end flex-column">
+                <div>
+                    <button class="btn text-dark d-inline-block" (click)="toggleEmojiPicker()"><i class="fas fa-laugh"></i></button>
+                    <button class="btn text-dark  d-inline-blockposition-relative" (click)="toggleAttachmentsCard()">
+                        <i class="fas fa-paperclip"></i>
+                        <div class="spinner-border cui-spinner position-absolute text-secondary" *ngIf="attachmentLoading"></div>
+                    </button>
+                    <button class="btn text-dark d-inline-block"><i class="fas fa-edit"></i></button>
+                </div>
             </div>
-            <input type="text" class="form-control w-100" [(ngModel)]="message" #messageInput>
-        </div>
-        <div class="cui-actions d-flex justify-content-end flex-column">
-            <button class="btn text-dark mt-auto" (click)="sendMessage()" [disabled]="getTrimmedMessage() == '' ? 'disabled' : ''"><i class="fas fa-paper-plane"></i></button>
+            <div class="cui-input flex-grow-1">
+                <div *ngIf="citeMessageIdx !== undefined && messages[citeMessageIdx]" class="d-block w-100 bg-light text-muted p-2 pt-1 pb-4 cui-citation" (click)="goToMessage(messages[citeMessageIdx].id)">
+                    <button class="btn float-right p-0 cui-close" (click)="citeMessageIdx = undefined"><i class="fas fa-times"></i></button>
+                    <span class="cui-user d-block"><b>{{messages[citeMessageIdx].sender.name}}</b></span>
+                    <small class="cui-citation-content  d-block overflow-hidden" [innerHTML]="messages[citeMessageIdx].text | utf8EmojisToImages:undefined:18"></small>
+                    <small class="float-right ml-4 text-muted">{{messages[citeMessageIdx].date | date:'shortTime'}}</small>
+                </div>
+                <input type="text" class="form-control w-100" [(ngModel)]="message" #messageInput>
+            </div>
+            <div class="cui-actions d-flex justify-content-end flex-column">
+                <button class="btn text-dark mt-auto" (click)="sendMessage()" [disabled]="getTrimmedMessage() == '' ? 'disabled' : ''"><i class="fas fa-paper-plane"></i></button>
+            </div>
         </div>
     </div>
 </div>
