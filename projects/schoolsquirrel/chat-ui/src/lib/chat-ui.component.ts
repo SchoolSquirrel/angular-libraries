@@ -1,6 +1,11 @@
 import {
     Component, OnInit, ViewChild, ElementRef, Input, Output, EventEmitter, ViewChildren, QueryList,
 } from "@angular/core";
+import { fromEvent } from "rxjs";
+import {
+    debounceTime,
+    map,
+} from "rxjs/operators";
 import { Message } from "./Message";
 import { MessageStatus } from "./MessageStatus";
 import { MessageReactions } from "./MessageReactions";
@@ -56,6 +61,7 @@ export class ChatUiComponent implements OnInit {
         title: "Pick an emoji",
         emoji: "grinning",
     };
+    private isTyping = false;
     get attachmentButtons(): AttachmentButton[] {
         return ([] as AttachmentButton[]).concat(...this.attachmentButtonRows);
     }
@@ -67,6 +73,7 @@ export class ChatUiComponent implements OnInit {
             buttons.slice(half, buttons.length),
         ];
     }
+    @Output() userTyping = new EventEmitter<boolean>();
     @Output() videoCallClicked = new EventEmitter<void>();
     @Output() audioCallClicked = new EventEmitter<void>();
     @Output() menuItemClicked = new EventEmitter<string>();
@@ -83,6 +90,19 @@ export class ChatUiComponent implements OnInit {
 
     public ngOnInit(): void {
         this.scrollToBottom();
+        fromEvent(this.messageInput.nativeElement, "keyup").pipe(
+            map(() => {
+                if (!this.isTyping) {
+                    this.isTyping = true;
+                    this.userTyping.emit(true);
+                }
+                return null;
+            }),
+            debounceTime(3000),
+        ).subscribe(() => {
+            this.isTyping = false;
+            this.userTyping.emit(false);
+        });
     }
 
     public getTrimmedMessage(): string {
