@@ -4,7 +4,7 @@
 [![Deploy Demo](https://github.com/SchoolSquirrel/angular-libraries/workflows/Deploy%20Demo/badge.svg)](https://github.com/SchoolSquirrel/angular-libraries/actions)
 [![License](https://img.shields.io/badge/License-MIT-blue)](./LICENSE.md)
 [![GitHub last commit](https://img.shields.io/github/last-commit/SchoolSquirrel/angular-libraries?color=brightgreen)](https://github.com/SchoolSquirrel/angular-libraries/commits)
-[![Maintenance](https://img.shields.io/maintenance/yes/2020)](https://github.com/SchoolSquirrel/angular-libraries/commits)
+[![Maintenance](https://img.shields.io/maintenance/yes/2021)](https://github.com/SchoolSquirrel/angular-libraries/commits)
 
 ## Overview
 This is the monorepo for the following packages:
