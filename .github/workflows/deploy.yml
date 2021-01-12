@@ -26,7 +26,7 @@ jobs:
     - name: Build demo app
       run: ng build demo --prod --base-href /angular-libraries/
     - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@3.5.5
+      uses: JamesIves/github-pages-deploy-action@3.7.1
       with:
         BRANCH: gh-pages
         FOLDER: dist/demo
